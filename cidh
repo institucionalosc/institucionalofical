@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>CIDH - Centro de Inclusão e Desenvolvimento Humano</title>
+    
+    <!-- Fontes modernas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* RESET E VARIÁVEIS - PALETA VERDE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2e7d32;      /* Verde escuro principal */
+            --secondary-color: #4caf50;     /* Verde médio */
+            --accent-color: #81c784;        /* Verde claro */
+            --light-green: #e8f5e8;         /* Verde muito claro para fundos */
+            --text-dark: #1b3b1b;           /* Verde quase preto para textos */
+            --text-light: #2e5e2e;           /* Verde médio para textos */
+            --bg-light: #f4f9f4;             /* Fundo com tom verde suave */
+            --white: #ffffff;
+            --shadow: 0 15px 40px rgba(46, 125, 50, 0.15);
+            --border-radius: 16px;
+            --card-hover: 0 20px 50px rgba(46, 125, 50, 0.25);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--bg-light);
+        }
+
+        /* NAVBAR RESPONSIVA */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            padding: 0.8rem 0;
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .btn-doador {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white) !important;
+            padding: 0.6rem 1.5rem !important;
+            border-radius: 50px;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+            transition: all 0.3s !important;
+        }
+
+        .btn-doador:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
+        }
+
+        .btn-doador::after {
+            display: none !important;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        /* MODAL DOAÇÃO */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            animation: modalSlide 0.3s ease;
+            border: 3px solid var(--primary-color);
+        }
+
+        @keyframes modalSlide {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-icon {
+            font-size: 4rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .modal h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .modal-mensagem {
+            background: var(--light-green);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .pix-info {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .pix-info p {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pix-info strong {
+            font-size: 1.4rem;
+            word-break: break-all;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        .pix-copy {
+            background: var(--white);
+            color: var(--primary-color);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+
+        .pix-copy:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* MODAL GALERIA */
+        .galeria-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .galeria-content {
+            max-width: 1200px;
+            width: 95%;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            position: relative;
+        }
+
+        .galeria-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--light-green);
+        }
+
+        .galeria-header h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+
+        .galeria-close {
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: color 0.3s;
+        }
+
+        .galeria-close:hover {
+            color: var(--primary-color);
+        }
+
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .galeria-item {
+            background: var(--light-green);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .galeria-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .galeria-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .galeria-descricao {
+            padding: 1.5rem;
+        }
+
+        .galeria-descricao h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .galeria-descricao p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-green) 100%);
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(76, 175, 80, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .hero-content h1 span {
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            border: none;
+            box-shadow: 0 10px 20px rgba(46, 125, 50, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(46, 125, 50, 0.4);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: 4px solid var(--white);
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--accent-color);
+            border-radius: var(--border-radius);
+            z-index: -1;
+        }
+
+        /* NOSSA HISTÓRIA */
+        .historia-section {
+            padding: 5rem 2rem;
+            background: var(--white);
+            position: relative;
+        }
+
+        .historia-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 3rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .historia-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .historia-texto {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            background: var(--light-green);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border-left: 6px solid var(--primary-color);
+        }
+
+        .historia-texto p {
+            margin-bottom: 1.5rem;
+        }
+
+        .historia-texto p:last-child {
+            margin-bottom: 0;
+        }
+
+        .historia-imagem img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        /* MISSÃO */
+        .missao-section {
+            padding: 5rem 2rem;
+            background: var(--light-green);
+        }
+
+        .missao-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .missao-card {
+            background: var(--white);
+            padding: 4rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            border: 2px solid var(--accent-color);
+        }
+
+        .missao-card i {
+            font-size: 4rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .missao-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .missao-card p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* PROJETOS */
+        .projetos-section {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+
+        .projetos-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .projetos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .projeto-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            border: 1px solid var(--accent-color);
+            cursor: pointer;
+        }
+
+        .projeto-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--card-hover);
+        }
+
+        .projeto-imagem {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .projeto-imagem img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .projeto-card:hover .projeto-imagem img {
+            transform: scale(1.1);
+        }
+
+        .projeto-info {
+            padding: 2rem;
+            background: linear-gradient(to top, var(--white), var(--light-green));
+        }
+
+        .projeto-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .projeto-info p {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .projeto-tag {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .foto-count {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+
+        .foto-count i {
+            margin-right: 0.3rem;
+        }
+
+        /* DIRETORIA */
+        .diretoria-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .diretoria-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><path d="M0 0 L100 100 M100 0 L0 100" stroke="white" stroke-width="1"/></svg>');
+            background-size: 30px 30px;
+        }
+
+        .diretoria-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .diretoria-container .section-title {
+            color: var(--white);
+        }
+
+        .diretoria-container .section-title::after {
+            background: var(--white);
+        }
+
+        .diretoria-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .diretoria-imagem img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 4px solid var(--white);
+        }
+
+        .diretoria-texto {
+            color: var(--white);
+        }
+
+        .diretoria-texto h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .diretoria-lista {
+            list-style: none;
+        }
+
+        .diretoria-lista li {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+        }
+
+        .diretoria-lista li i {
+            font-size: 1.3rem;
+            color: var(--accent-color);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 4rem 2rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+            line-height: 2;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            font-size: 1.8rem;
+            color: var(--white);
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* MEDIA QUERIES */
+        @media screen and (max-width: 968px) {
+            .hero-container,
+            .historia-grid,
+            .diretoria-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-content {
+                order: 2;
+                text-align: center;
+            }
+
+            .hero-content p {
+                max-width: 100%;
+            }
+
+            .hero-image {
+                order: 1;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .historia-texto {
+                order: 2;
+            }
+
+            .historia-imagem {
+                order: 1;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: var(--white);
+                width: 100%;
+                text-align: center;
+                padding: 2rem 0;
+                box-shadow: var(--shadow);
+                transition: 0.3s;
+                gap: 1.5rem;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .projetos-grid {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .diretoria-content {
+                padding: 1.5rem;
+            }
+
+            .missao-card {
+                padding: 2rem;
+            }
+
+            .galeria-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .hero {
+                padding: 7rem 1rem 3rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .historia-texto,
+            .missao-card {
+                padding: 1.5rem;
+            }
+
+            .modal-content {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">CIDH</a>
+            
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#historia">Nossa História</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#diretoria">Diretoria</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="#" class="btn-doador" id="btnDoador"><i class="fas fa-heart"></i> Seja um Doador</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- MODAL DOAÇÃO -->
+    <div id="modalDoacao" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-icon">
+                <i class="fas fa-hand-holding-heart"></i>
+            </div>
+            <h2>Faça uma Doação</h2>
+            
+            <div class="modal-mensagem">
+                <i class="fas fa-heart" style="color: var(--primary-color); margin-right: 0.5rem;"></i>
+                Sua doação transforma vidas! Com seu apoio, podemos continuar realizando projetos que levam educação, cultura e oportunidades para quem mais precisa. Qualquer valor faz a diferença!
+            </div>
+
+            <div class="pix-info">
+                <p><i class="fas fa-pix" style="margin-right: 0.5rem;"></i> Doe via PIX</p>
+                <strong>41.572.637/0001-30</strong>
+                <br>
+                <button class="pix-copy" onclick="copiarPix()">
+                    <i class="fas fa-copy"></i> Copiar chave PIX
+                </button>
+            </div>
+
+            <p style="text-align: center; color: var(--text-light); margin-top: 1rem;">
+                <i class="fas fa-check-circle" style="color: var(--primary-color);"></i>
+                Sua doação é muito importante para nós!
+            </p>
+        </div>
+    </div>
+
+    <!-- MODAL GALERIA -->
+    <div id="galeriaModal" class="galeria-modal">
+        <div class="galeria-content">
+            <div class="galeria-header">
+                <h2 id="galeriaTitulo">Projeto</h2>
+                <span class="galeria-close">&times;</span>
+            </div>
+            <div class="galeria-grid" id="galeriaGrid">
+                <!-- Fotos serão inseridas via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>
+                    Transformando vidas através
+                    <span>da inclusão e desenvolvimento</span>
+                </h1>
+                <p>Construindo pontes para um futuro mais justo e igualitário através de projetos sociais, educacionais e culturais.</p>
+                <a href="#projetos" class="btn">Conheça nossos projetos</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Inclusão social">
+            </div>
+        </div>
+    </section>
+
+    <!-- NOSSA HISTÓRIA -->
+    <section id="historia" class="historia-section">
+        <div class="historia-container">
+            <h2 class="section-title">Nossa História</h2>
+            <div class="historia-grid">
+                <div class="historia-texto">
+                    <p>O CIDH é uma instituição comprometida com a promoção da inclusão social, do desenvolvimento humano e da ampliação de oportunidades para pessoas em situação de vulnerabilidade. A organização atua por meio de projetos sociais, educacionais, culturais e esportivos que buscam fortalecer comunidades e gerar impactos positivos duradouros.</p>
+                    
+                    <p>Com foco na valorização das potencialidades individuais e coletivas, o CIDH desenvolve iniciativas voltadas à formação cidadã, qualificação profissional, estímulo à educação e promoção do bem-estar social. Suas ações priorizam o atendimento a crianças, adolescentes, jovens e famílias que enfrentam barreiras sociais, econômicas e educacionais.</p>
+                    
+                    <p>A instituição acredita que o acesso ao conhecimento, ao esporte, à cultura e às oportunidades de desenvolvimento é fundamental para reduzir desigualdades e construir trajetórias de vida mais dignas. Por isso, seus projetos são estruturados de forma participativa, buscando fortalecer vínculos comunitários, estimular o protagonismo social e ampliar as perspectivas de futuro dos participantes.</p>
+                    
+                    <p>Mais do que executar atividades, o CIDH atua como agente de transformação social, promovendo inclusão, cidadania e desenvolvimento humano sustentável nos territórios onde está presente.</p>
+                </div>
+                <div class="historia-imagem">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Nossa história">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MISSÃO -->
+    <section class="missao-section">
+        <div class="missao-container">
+            <div class="missao-card">
+                <i class="fas fa-heart"></i>
+                <h3>Nossa Missão</h3>
+                <p>Promover a inclusão social e o desenvolvimento humano através de projetos transformadores que geram oportunidades e fortalecem comunidades, construindo um futuro mais digno e igualitário para todos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJETOS -->
+    <section id="projetos" class="projetos-section">
+        <div class="projetos-container">
+            <h2 class="section-title">Nossos Projetos</h2>
+            <div class="projetos-grid">
+                <!-- Projeto 1 - Curso de Manicure -->
+                <div class="projeto-card" onclick="abrirGaleria('manicure')">
+                    <div class="projeto-imagem">
+                        <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Curso de Manicure">
+                        <span class="foto-count"><i class="fas fa-images"></i> 4 fotos</span>
+                    </div>
+                    <div class="projeto-info">
+                        <h3>Curso de Manicure</h3>
+                        <p>Capacitação profissional gratuita para mulheres em situação de vulnerabilidade, oferecendo formação completa em técnicas de manicure e pedicure.</p>
+                        <span class="projeto-tag">Geração de Renda</span>
+                    </div>
+                </div>
+
+                <!-- Projeto 2 - Inclusão Social -->
+                <div class="projeto-card" onclick="abrirGaleria('inclusao')">
+                    <div class="projeto-imagem">
+                        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Inclusão Social">
+                        <span class="foto-count"><i class="fas fa-images"></i> 5 fotos</span>
+                    </div>
+                    <div class="projeto-info">
+                        <h3>Inclusão Social</h3>
+                        <p>Programa de integração social que atende pessoas com deficiência, oferecendo atividades inclusivas e desenvolvimento pessoal.</p>
+                        <span class="projeto-tag">Acessibilidade</span>
+                    </div>
+                </div>
+
+                <!-- Projeto 3 - Projeto Estuda Caucaia -->
+                <div class="projeto-card" onclick="abrirGaleria('estuda')">
+                    <div class="projeto-imagem">
+                        <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Projeto Estuda Caucaia">
+                        <span class="foto-count"><i class="fas fa-images"></i> 6 fotos</span>
+                    </div>
+                    <div class="projeto-info">
+                        <h3>Projeto Estuda Caucaia</h3>
+                        <p>Reforço escolar e acompanhamento pedagógico para crianças e adolescentes em situação de risco social.</p>
+                        <span class="projeto-tag">Educação</span>
+                    </div>
+                </div>
+
+                <!-- Projeto 4 - Esporte e Cidadania -->
+                <div class="projeto-card" onclick="abrirGaleria('esporte')">
+                    <div class="projeto-imagem">
+                        <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Esporte e Cidadania">
+                        <span class="foto-count"><i class="fas fa-images"></i> 4 fotos</span>
+                    </div>
+                    <div class="projeto-info">
+                        <h3>Esporte e Cidadania</h3>
+                        <p>Escolinhas de futebol, vôlei e basquete para jovens, promovendo saúde, disciplina e trabalho em equipe.</p>
+                        <span class="projeto-tag">Esporte</span>
+                    </div>
+                </div>
+
+                <!-- Projeto 5 - Cultura Viva -->
+                <div class="projeto-card" onclick="abrirGaleria('cultura')">
+                    <div class="projeto-imagem">
+                        <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cultura Viva">
+                        <span class="foto-count"><i class="fas fa-images"></i> 5 fotos</span>
+                    </div>
+                    <div class="projeto-info">
+                        <h3>Cultura Viva</h3>
+                        <p>Oficinas de música, dança, teatro e artesanato para todas as idades, valorizando a cultura local.</p>
+                        <span class="projeto-tag">Cultura</span>
+                    </div>
+                </div>
+
+                <!-- Projeto 6 - Qualificação Profissional -->
+                <div class="projeto-card" onclick="abrirGaleria('qualificacao')">
+                    <div class="projeto-imagem">
+                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Qualificação Profissional">
+                        <span class="foto-count"><i class="fas fa-images"></i> 4 fotos</span>
+                    </div>
+                    <div class="projeto-info">
+                        <h3>Qualificação Profissional</h3>
+                        <p>Cursos profissionalizantes preparando jovens e adultos para o mercado de trabalho.</p>
+                        <span class="projeto-tag">Trabalho</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIRETORIA -->
+    <section id="diretoria" class="diretoria-section">
+        <div class="diretoria-container">
+            <h2 class="section-title">Nossa Diretoria</h2>
+            <div class="diretoria-content">
+                <div class="diretoria-imagem">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Diretoria CIDH">
+                </div>
+                <div class="diretoria-texto">
+                    <h3>Liderança comprometida com a transformação social</h3>
+                    <ul class="diretoria-lista">
+                        <li><i class="fas fa-user-tie"></i> <strong>Tayany</strong> - Presidente</li>
+                        <li><i class="fas fa-user-tie"></i> <strong>Francisco Hermicezio</strong> - Tesoureiro</li>
+                        <li><i class="fas fa-user-tie"></i> <strong>Isabel Cristina</strong> - Secretária</li>
+                        <li><i class="fas fa-user-tie"></i> <strong>Maurício</strong> - Conselho Fiscal</li>
+                        <li><i class="fas fa-user-tie"></i> <strong>Hermicelia</strong> - Conselho Fiscal</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contato" class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>CIDH</h4>
+                <p>Centro de Inclusão e Desenvolvimento Humano</p>
+                <p>Transformando vidas através da inclusão social e desenvolvimento humano sustentável.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Links Rápidos</h4>
+                <p><a href="#home">Início</a></p>
+                <p><a href="#historia">Nossa História</a></p>
+                <p><a href="#projetos">Projetos</a></p>
+                <p><a href="#diretoria">Diretoria</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Contato</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Rua das Flores, 123 - Centro</p>
+                <p><i class="fas fa-phone"></i> (85) 3333-4444</p>
+                <p><i class="fas fa-envelope"></i> contato@cidh.org.br</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 CIDH - Centro de Inclusão e Desenvolvimento Humano. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Menu mobile
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // MODAL DOAÇÃO
+        const modalDoacao = document.getElementById('modalDoacao');
+        const btnDoador = document.getElementById('btnDoador');
+        const modalClose = document.querySelector('.modal-close');
+
+        btnDoador.addEventListener('click', (e) => {
+            e.preventDefault();
+            modalDoacao.style.display = 'flex';
+        });
+
+        modalClose.addEventListener('click', () => {
+            modalDoacao.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modalDoacao) {
+                modalDoacao.style.display = 'none';
+            }
+        });
+
+        // Função para copiar PIX
+        function copiarPix() {
+            const pix = '41.572.637/0001-30';
+            navigator.clipboard.writeText(pix).then(() => {
+                alert('Chave PIX copiada com sucesso!');
+            });
+        }
+
+        // MODAL GALERIA
+        const galeriaModal = document.getElementById('galeriaModal');
+        const galeriaClose = document.querySelector('.galeria-close');
+        const galeriaGrid = document.getElementById('galeriaGrid');
+        const galeriaTitulo = document.getElementById('galeriaTitulo');
+
+        // Dados das galerias
+        const galerias = {
+            manicure: {
+                titulo: 'Curso de Manicure',
+                fotos: [
+                    { url: 'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Alunas durante aula prática de manicure' },
+                    { url: 'https://images.unsplash.com/photo-1610992015732-2449b76344bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Demonstração de técnicas de esmaltação' },
+                    { url: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Certificado de conclusão entregue às alunas' },
+                    { url: 'https://images.unsplash.com/photo-1571767454009-9c75b9957c76?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Turma formada no curso de manicure' }
+                ]
+            },
+            inclusao: {
+                titulo: 'Inclusão Social',
+                fotos: [
+                    { url: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Atividades inclusivas com pessoas com deficiência' },
+                    { url: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Oficina de inclusão digital' },
+                    { url: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Acompanhamento psicológico em grupo' },
+                    { url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Equipe multidisciplinar' },
+                    { url: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Atividades de integração social' }
+                ]
+            },
+            estuda: {
+                titulo: 'Projeto Estuda Caucaia',
+                fotos: [
+                    { url: 'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Aula de reforço escolar' },
+                    { url: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Crianças durante atividade pedagógica' },
+                    { url: 'https://images.unsplash.com/photo-1484820540004-14229fe36ca4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Biblioteca comunitária' },
+                    { url: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Entrega de material escolar' },
+                    { url: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Oficina de leitura' },
+                    { url: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Formatura dos alunos' }
+                ]
+            },
+            esporte: {
+                titulo: 'Esporte e Cidadania',
+                fotos: [
+                    { url: 'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Aula de futebol para crianças' },
+                    { url: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Treino de vôlei' },
+                    { url: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Basquete para jovens' },
+                    { url: 'https://images.unsplash.com/photo-1526232761682-d26e03ac148e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Campeonato esportivo' }
+                ]
+            },
+            cultura: {
+                titulo: 'Cultura Viva',
+                fotos: [
+                    { url: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Oficina de música' },
+                    { url: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Aula de dança' },
+                    { url: 'https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Oficina de teatro' },
+                    { url: 'https://images.unsplash.com/photo-1561839561-b13bcfe95249?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Artesanato local' },
+                    { url: 'https://images.unsplash.com/photo-1544928147-79a2dbc1f389?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Apresentação cultural' }
+                ]
+            },
+            qualificacao: {
+                titulo: 'Qualificação Profissional',
+                fotos: [
+                    { url: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Curso de informática' },
+                    { url: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Aula de administração' },
+                    { url: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Turma de qualificação' },
+                    { url: 'https://images.unsplash.com-2023-01?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', descricao: 'Entrega de certificados' }
+                ]
+            }
+        };
+
+        function abrirGaleria(projetoId) {
+            const galeria = galerias[projetoId];
+            if (!galeria) return;
+
+            galeriaTitulo.textContent = galeria.titulo;
+            galeriaGrid.innerHTML = '';
+
+            galeria.fotos.forEach(foto => {
+                const item = document.createElement('div');
+                item.className = 'galeria-item';
+                item.innerHTML = `
+                    <img src="${foto.url}" alt="${foto.descricao}">
+                    <div class="galeria-descricao">
+                        <p>${foto.descricao}</p>
+                    </div>
+                `;
+                galeriaGrid.appendChild(item);
+            });
+
+            galeriaModal.style.display = 'flex';
+        }
+
+        galeriaClose.addEventListener('click', () => {
+            galeriaModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === galeriaModal) {
+                galeriaModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
