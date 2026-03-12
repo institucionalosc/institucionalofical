@@ -425,6 +425,7 @@
             line-height: 1.6;
         }
 
+        /* Estilo para tabela de valores */
         .detalhe-valores {
             background: var(--light-green);
             padding: 1rem;
@@ -450,6 +451,37 @@
             margin-top: 0.5rem;
             padding-top: 0.5rem;
             border-top: 2px solid var(--primary-color);
+        }
+
+        /* ESTILO PARA TERMO DE PARCERIA (apenas para o projeto Manicure) */
+        .termo-parceria {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            text-align: center;
+            border: 2px dashed var(--accent-color);
+        }
+
+        .termo-parceria i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .termo-parceria p {
+            font-size: 1.1rem;
+            margin: 0;
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .termo-parceria strong {
+            display: block;
+            font-size: 1.3rem;
+            margin-top: 0.5rem;
+            color: var(--accent-color);
         }
 
         .status-badge {
@@ -641,19 +673,6 @@
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 30px rgba(46, 125, 50, 0.4);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-            box-shadow: none;
-            margin-left: 1rem;
-        }
-
-        .btn-outline:hover {
-            background: var(--primary-color);
-            color: var(--white);
         }
 
         .hero-image {
@@ -1122,16 +1141,6 @@
                 grid-template-columns: 1fr;
                 gap: 1rem;
             }
-
-            .hero-content .btn {
-                display: block;
-                width: 100%;
-                margin: 0.5rem 0;
-            }
-            
-            .btn-outline {
-                margin-left: 0;
-            }
         }
 
         @media screen and (max-width: 480px) {
@@ -1235,7 +1244,7 @@
             <div class="transparencia-resumo">
                 <div class="resumo-item">
                     <i class="fas fa-hand-holding-heart"></i>
-                    <div class="valor">R$ 245.780</div>
+                    <div class="valor">R$ 312.280</div>
                     <div class="label">Total Arrecadado (2024)</div>
                 </div>
                 <div class="resumo-item">
@@ -1249,57 +1258,43 @@
                     <div class="label">Projetos Ativos</div>
                 </div>
                 <div class="resumo-item">
-                    <i class="fas fa-clock"></i>
-                    <div class="valor">5</div>
-                    <div class="label">Anos de Atuação</div>
+                    <i class="fas fa-handshake"></i>
+                    <div class="valor">1</div>
+                    <div class="label">Termo de Parceria</div>
                 </div>
             </div>
 
-            <!-- Grid de Projetos com Valores -->
+            <!-- Grid de Projetos -->
             <div class="transparencia-grid" id="transparenciaGrid">
-                <!-- Projeto 1 - Curso de Manicure -->
+                <!-- Projeto 1 - Curso de Manicure (APENAS ESTE COM TERMO DE PARCERIA) -->
                 <div class="transparencia-card">
                     <img src="mani_01.jpeg" alt="Curso de Manicure" onerror="this.src='https://via.placeholder.com/400x200?text=Curso+de+Manicure'">
                     <div class="transparencia-info">
                         <h3><i class="fas fa-cut"></i> Curso de Manicure</h3>
                         <p>Capacitação profissional gratuita para mulheres em situação de vulnerabilidade, oferecendo formação completa em manicure e pedicure.</p>
-                        <div class="detalhe-valores">
-                            <div class="linha">
-                                <span>Investimento Total:</span>
-                                <strong>R$ 45.000</strong>
-                            </div>
-                            <div class="linha">
-                                <span>Materiais e Insumos:</span>
-                                <span>R$ 18.500</span>
-                            </div>
-                            <div class="linha">
-                                <span>Instrutores:</span>
-                                <span>R$ 12.000</span>
-                            </div>
-                            <div class="linha">
-                                <span>Certificação:</span>
-                                <span>R$ 4.500</span>
-                            </div>
-                            <div class="linha">
-                                <span>Kit para Alunas:</span>
-                                <span>R$ 10.000</span>
-                            </div>
-                            <div class="total">
-                                Total: R$ 45.000
-                            </div>
+                        
+                        <!-- TERMO DE PARCERIA - APENAS AQUI -->
+                        <div class="termo-parceria">
+                            <i class="fas fa-handshake"></i>
+                            <p>Projeto executado por</p>
+                            <strong>TERMO DE PARCERIA</strong>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">SESC - Serviço Social do Comércio</p>
                         </div>
+
                         <p><i class="fas fa-users"></i> <strong>120 mulheres beneficiadas</strong></p>
                         <p><i class="fas fa-calendar"></i> Período: Março - Dezembro/2024</p>
                         <span class="status-badge status-andamento">Em Andamento</span>
                     </div>
                 </div>
 
-                <!-- Projeto 2 - Inclusão Social -->
+                <!-- Projeto 2 - Inclusão Social (COM TABELA DE VALORES) -->
                 <div class="transparencia-card">
                     <img src="roda01.jpeg" alt="Inclusão Social" onerror="this.src='https://via.placeholder.com/400x200?text=Inclusão+Social'">
                     <div class="transparencia-info">
                         <h3><i class="fas fa-hands-helping"></i> Inclusão Social</h3>
                         <p>Programa de integração social que atende pessoas da comunidade com atividades inclusivas, rodas de conversa e desenvolvimento pessoal.</p>
+                        
+                        <!-- TABELA DE VALORES NORMAL -->
                         <div class="detalhe-valores">
                             <div class="linha">
                                 <span>Investimento Total:</span>
@@ -1325,18 +1320,21 @@
                                 Total: R$ 38.750
                             </div>
                         </div>
+
                         <p><i class="fas fa-users"></i> <strong>85 participantes diretos</strong></p>
                         <p><i class="fas fa-calendar"></i> Período: Fevereiro - Novembro/2024</p>
                         <span class="status-badge status-andamento">Em Andamento</span>
                     </div>
                 </div>
 
-                <!-- Projeto 3 - Esporte e Cidadania -->
+                <!-- Projeto 3 - Esporte e Cidadania (COM TABELA DE VALORES) -->
                 <div class="transparencia-card">
                     <img src="jiu_010.jpeg" alt="Esporte e Cidadania" onerror="this.src='https://via.placeholder.com/400x200?text=Esporte+e+Cidadania'">
                     <div class="transparencia-info">
                         <h3><i class="fas fa-futbol"></i> Esporte e Cidadania</h3>
                         <p>Promovendo saúde, disciplina e trabalho em equipe através de atividades esportivas para crianças e adolescentes.</p>
+                        
+                        <!-- TABELA DE VALORES NORMAL -->
                         <div class="detalhe-valores">
                             <div class="linha">
                                 <span>Investimento Total:</span>
@@ -1362,18 +1360,21 @@
                                 Total: R$ 52.300
                             </div>
                         </div>
+
                         <p><i class="fas fa-users"></i> <strong>150 crianças e adolescentes</strong></p>
                         <p><i class="fas fa-calendar"></i> Período: Janeiro - Dezembro/2024</p>
                         <span class="status-badge status-concluido">Concluído</span>
                     </div>
                 </div>
 
-                <!-- Projeto 4 - Cultura Viva -->
+                <!-- Projeto 4 - Cultura Viva (COM TABELA DE VALORES) -->
                 <div class="transparencia-card">
                     <img src="cut_02.jpeg" alt="Cultura Viva" onerror="this.src='https://via.placeholder.com/400x200?text=Cultura+Viva'">
                     <div class="transparencia-info">
                         <h3><i class="fas fa-palette"></i> Cultura Viva</h3>
                         <p>Oficinas de música, dança, teatro e artesanato para todas as idades, valorizando a cultura local.</p>
+                        
+                        <!-- TABELA DE VALORES NORMAL -->
                         <div class="detalhe-valores">
                             <div class="linha">
                                 <span>Investimento Total:</span>
@@ -1399,18 +1400,21 @@
                                 Total: R$ 63.450
                             </div>
                         </div>
+
                         <p><i class="fas fa-users"></i> <strong>200 participantes</strong></p>
                         <p><i class="fas fa-calendar"></i> Período: Março - Novembro/2024</p>
                         <span class="status-badge status-andamento">Em Andamento</span>
                     </div>
                 </div>
 
-                <!-- Projeto 5 - Qualificação Profissional -->
+                <!-- Projeto 5 - Qualificação Profissional (COM TABELA DE VALORES) -->
                 <div class="transparencia-card">
                     <img src="conv_01.jpeg" alt="Qualificação Profissional" onerror="this.src='https://via.placeholder.com/400x200?text=Qualificação+Profissional'">
                     <div class="transparencia-info">
                         <h3><i class="fas fa-briefcase"></i> Qualificação Profissional</h3>
                         <p>Cursos profissionalizantes preparando jovens e adultos para o mercado de trabalho.</p>
+                        
+                        <!-- TABELA DE VALORES NORMAL -->
                         <div class="detalhe-valores">
                             <div class="linha">
                                 <span>Investimento Total:</span>
@@ -1436,18 +1440,21 @@
                                 Total: R$ 74.280
                             </div>
                         </div>
+
                         <p><i class="fas fa-users"></i> <strong>180 jovens e adultos</strong></p>
                         <p><i class="fas fa-calendar"></i> Período: Janeiro - Dezembro/2024</p>
                         <span class="status-badge status-previsto">Previsto</span>
                     </div>
                 </div>
 
-                <!-- Projeto 6 - Apoio Alimentar -->
+                <!-- Projeto 6 - Apoio Alimentar (COM TABELA DE VALORES) -->
                 <div class="transparencia-card">
                     <img src="https://via.placeholder.com/400x200?text=Apoio+Alimentar" alt="Apoio Alimentar">
                     <div class="transparencia-info">
                         <h3><i class="fas fa-apple-alt"></i> Apoio Alimentar</h3>
                         <p>Distribuição de cestas básicas e suplementação alimentar para famílias em situação de insegurança alimentar.</p>
+                        
+                        <!-- TABELA DE VALORES NORMAL -->
                         <div class="detalhe-valores">
                             <div class="linha">
                                 <span>Investimento Total:</span>
@@ -1469,6 +1476,7 @@
                                 Total: R$ 38.500
                             </div>
                         </div>
+
                         <p><i class="fas fa-users"></i> <strong>75 famílias atendidas</strong></p>
                         <p><i class="fas fa-calendar"></i> Período: Abril - Dezembro/2024</p>
                         <span class="status-badge status-andamento">Em Andamento</span>
@@ -1483,7 +1491,7 @@
                 <p style="color: var(--text-light); max-width: 800px; margin: 0 auto;">
                     Todos os recursos são geridos com responsabilidade e transparência. 
                     Prestamos contas regularmente aos nossos doadores e à sociedade. 
-                    Para mais detalhes ou esclarecimentos, entre em contato conosco.
+                    O projeto "Curso de Manicure" é realizado através de Termo de Parceria com o SESC.
                 </p>
             </div>
         </div>
@@ -1511,10 +1519,7 @@
                     <span>da inclusão e desenvolvimento</span>
                 </h1>
                 <p>Construindo pontes para um futuro mais justo e igualitário através de projetos sociais, educacionais e culturais.</p>
-                <div>
-                    <a href="#projetos" class="btn">Conheça nossos projetos</a>
-                    <a href="#" class="btn btn-outline" id="btnTransparenciaHero"><i class="fas fa-chart-line"></i> Portal da Transparência</a>
-                </div>
+                <a href="#projetos" class="btn">Conheça nossos projetos</a>
             </div>
             <div class="hero-image">
                 <img src="https://raw.githubusercontent.com/institucionalosc/institucionalofical/refs/heads/main/Estruturas%20para%20site%20(1).png" alt="Inclusão social">
@@ -1754,7 +1759,6 @@
         // MODAL TRANSPARÊNCIA
         const transparenciaModal = document.getElementById('transparenciaModal');
         const btnTransparencia = document.getElementById('btnTransparencia');
-        const btnTransparenciaHero = document.getElementById('btnTransparenciaHero');
         const btnTransparenciaFooter = document.getElementById('btnTransparenciaFooter');
         const transparenciaClose = document.querySelector('.transparencia-close');
 
@@ -1771,10 +1775,6 @@
 
         if (btnTransparencia) {
             btnTransparencia.addEventListener('click', abrirTransparencia);
-        }
-
-        if (btnTransparenciaHero) {
-            btnTransparenciaHero.addEventListener('click', abrirTransparencia);
         }
 
         if (btnTransparenciaFooter) {
