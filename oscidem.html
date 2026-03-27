@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Instituto IDEM </title>
+    <title>Instituto IDEM - Desenvolvimento, Equidade e Mudança</title>
     
     <!-- Fontes modernas -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,16 +21,16 @@
         }
 
         :root {
-            --primary-color: #1e3a8a;      /* Azul escuro principal */
-            --primary-dark: #1e3a8a;       /* Azul mais escuro */
-            --primary-light: #3b82f6;       /* Azul médio */
-            --secondary-color: #f97316;     /* Laranja para destaque */
+            --primary-color: #1e3a8a;
+            --primary-dark: #1e3a8a;
+            --primary-light: #3b82f6;
+            --secondary-color: #f97316;
             --secondary-dark: #ea580c;
-            --accent-blue: #60a5fa;         /* Azul claro */
+            --accent-blue: #60a5fa;
             --text-dark: #1e293b;
             --text-gray: #334155;
             --text-light: #64748b;
-            --bg-light: #f0f9ff;             /* Fundo azul bem claro */
+            --bg-light: #f0f9ff;
             --white: #ffffff;
             --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
             --shadow-md: 0 10px 25px rgba(0,0,0,0.08);
@@ -46,7 +46,7 @@
             background-color: var(--bg-light);
         }
 
-        /* NAVBAR */
+        /* NAVBAR COMPACTA */
         .navbar {
             position: fixed;
             top: 0;
@@ -55,7 +55,7 @@
             backdrop-filter: blur(10px);
             box-shadow: var(--shadow-sm);
             z-index: 1000;
-            padding: 1rem 0;
+            padding: 0.8rem 0;
         }
 
         .nav-container {
@@ -69,7 +69,7 @@
 
         .logo h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 800;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
@@ -78,16 +78,16 @@
         }
 
         .logo p {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: var(--text-light);
-            letter-spacing: 1px;
-            margin-top: -5px;
+            letter-spacing: 0.5px;
+            margin-top: -3px;
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1.2rem;
             align-items: center;
         }
 
@@ -95,8 +95,9 @@
             text-decoration: none;
             color: var(--text-gray);
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             transition: var(--transition);
+            white-space: nowrap;
         }
 
         .nav-menu a:hover {
@@ -106,9 +107,10 @@
         .btn-doador-nav {
             background: linear-gradient(135deg, var(--secondary-color), var(--secondary-dark));
             color: var(--white) !important;
-            padding: 0.6rem 1.5rem !important;
+            padding: 0.5rem 1.2rem !important;
             border-radius: 50px;
             font-weight: 600;
+            font-size: 0.85rem !important;
             transition: var(--transition);
         }
 
@@ -121,9 +123,10 @@
             background: transparent;
             border: 2px solid var(--primary-color);
             color: var(--primary-color) !important;
-            padding: 0.6rem 1.5rem !important;
+            padding: 0.5rem 1.2rem !important;
             border-radius: 50px;
             font-weight: 600;
+            font-size: 0.85rem !important;
         }
 
         .btn-padrinho-nav:hover {
@@ -141,7 +144,7 @@
         /* HERO SECTION */
         .hero {
             background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            padding: 8rem 2rem 4rem;
+            padding: 7rem 2rem 4rem;
             position: relative;
             overflow: hidden;
         }
@@ -156,7 +159,7 @@
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 800;
             line-height: 1.2;
             margin-bottom: 1rem;
@@ -170,7 +173,7 @@
         }
 
         .slogan {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 500;
             color: var(--primary-color);
             margin-bottom: 1.5rem;
@@ -180,7 +183,7 @@
         }
 
         .hero-content p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-light);
             margin-bottom: 2rem;
             line-height: 1.6;
@@ -195,7 +198,7 @@
         .btn-primary {
             background: linear-gradient(135deg, var(--secondary-color), var(--secondary-dark));
             color: var(--white);
-            padding: 1rem 2rem;
+            padding: 0.9rem 1.8rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
@@ -203,6 +206,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            font-size: 0.9rem;
         }
 
         .btn-primary:hover {
@@ -214,11 +218,12 @@
             background: transparent;
             border: 2px solid var(--primary-color);
             color: var(--primary-color);
-            padding: 1rem 2rem;
+            padding: 0.9rem 1.8rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition);
+            font-size: 0.9rem;
         }
 
         .btn-secondary:hover {
@@ -232,10 +237,82 @@
             box-shadow: var(--shadow-lg);
         }
 
+        /* NOSSA HISTÓRIA SECTION */
+        .historia-section {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+
+        .historia-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header .tag {
+            color: var(--secondary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .historia-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #f8fafc, #ffffff);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            border-left: 6px solid var(--secondary-color);
+        }
+
+        .historia-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+            text-align: justify;
+        }
+
+        .historia-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .historia-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .historia-text strong {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .historia-quote {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px dashed var(--accent-blue);
+            font-style: italic;
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
         /* IMPACTOS SECTION */
         .impactos {
             padding: 4rem 2rem;
-            background: var(--white);
+            background: linear-gradient(135deg, #f0f9ff, #ffffff);
         }
 
         .impactos-container {
@@ -280,10 +357,11 @@
         .impacto-card {
             text-align: center;
             padding: 2rem;
-            background: linear-gradient(135deg, #f0f9ff, #ffffff);
+            background: var(--white);
             border-radius: var(--border-radius);
             transition: var(--transition);
             border: 1px solid rgba(30, 58, 138, 0.1);
+            box-shadow: var(--shadow-sm);
         }
 
         .impacto-card:hover {
@@ -371,26 +449,6 @@
         .projetos-incentivados {
             padding: 5rem 2rem;
             background: var(--bg-light);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-header .tag {
-            color: var(--secondary-color);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.85rem;
-            display: inline-block;
-            margin-bottom: 1rem;
-        }
-
-        .section-header h2 {
-            font-size: 2rem;
-            font-weight: 800;
         }
 
         .incentivados-grid {
@@ -663,6 +721,16 @@
         }
 
         /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .nav-menu {
+                gap: 0.8rem;
+            }
+            
+            .nav-menu a {
+                font-size: 0.75rem;
+            }
+        }
+
         @media (max-width: 968px) {
             .hero-container {
                 grid-template-columns: 1fr;
@@ -695,11 +763,15 @@
                 padding: 2rem;
                 box-shadow: var(--shadow-md);
                 transition: 0.3s;
-                gap: 1.5rem;
+                gap: 1.2rem;
             }
 
             .nav-menu.active {
                 left: 0;
+            }
+            
+            .nav-menu a {
+                font-size: 0.9rem;
             }
         }
 
@@ -723,11 +795,19 @@
             .hero-buttons {
                 flex-direction: column;
             }
+            
+            .historia-content {
+                padding: 1.5rem;
+            }
+            
+            .historia-text {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- NAVBAR -->
+    <!-- NAVBAR COMPACTA -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
@@ -739,9 +819,9 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="#home">INÍCIO</a></li>
-                <li><a href="#" id="btnPadrinhoNav" class="btn-padrinho-nav">SEJA UM PADRINHO</a></li>
+                <li><a href="#" id="btnPadrinhoNav" class="btn-padrinho-nav">SEJA PADRINHO</a></li>
                 <li><a href="#historia">NOSSA HISTÓRIA</a></li>
-                <li><a href="#projetos-incentivados">PROJETOS INCENTIVADOS</a></li>
+                <li><a href="#projetos-incentivados">PROJ. INCENTIVADOS</a></li>
                 <li><a href="#projetos">PROJETOS</a></li>
                 <li><a href="#" id="btnTransparenciaNav">TRANSPARÊNCIA</a></li>
                 <li><a href="#noticias">NOTÍCIAS</a></li>
@@ -777,11 +857,30 @@
                 <div class="hero-buttons">
                     <a href="#" class="btn-primary" id="btnDoadorHero"><i class="fas fa-hand-holding-heart"></i> FAÇA SUA INSCRIÇÃO</a>
                     <a href="#" class="btn-primary" id="btnDoadorHero2"><i class="fas fa-heart"></i> DOE AGORA</a>
-                    <a href="#" class="btn-secondary" id="btnPadrinhoHero">SEJA UM PADRINHO</a>
+                    <a href="#" class="btn-secondary" id="btnPadrinhoHero">SEJA PADRINHO</a>
                 </div>
             </div>
             <div class="hero-image">
                 <img src="https://raw.githubusercontent.com/institucionalosc/institucionalofical/refs/heads/main/Estruturas%20para%20site%20(1).png" alt="Instituto IDEM">
+            </div>
+        </div>
+    </section>
+
+    <!-- NOSSA HISTÓRIA SECTION -->
+    <section id="historia" class="historia-section">
+        <div class="historia-container">
+            <div class="section-header">
+                <div class="tag">NOSSA TRAJETÓRIA</div>
+                <h2>Conheça nossa história</h2>
+            </div>
+            <div class="historia-content">
+                <div class="historia-text">
+                    <p>Nascemos do sonho de criar mais oportunidades para todos os brasileiros, de forma <strong>igualitária e equitativa</strong>, para que se promovam uma verdadeira <strong>inclusão e desenvolvimento pessoal</strong>, intelectual, cultural, social e comunitário que garantam impactos positivos e duradouros, capazes de gerar as <strong>mudanças sociais</strong> que precisamos para ter uma sociedade justa, acolhedora, fraterna e solidária.</p>
+                    <p>Desde nossa fundação, trabalhamos incansavelmente para construir pontes entre sonhos e realidades, acreditando que cada pessoa tem o potencial de transformar não apenas sua própria vida, mas também a comunidade ao seu redor.</p>
+                </div>
+                <div class="historia-quote">
+                    <i class="fas fa-quote-left"></i> Acreditamos que a mudança começa com oportunidades e se fortalece com compromisso coletivo.
+                </div>
             </div>
         </div>
     </section>
