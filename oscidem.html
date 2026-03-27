@@ -445,7 +445,7 @@
             color: var(--primary-color);
         }
 
-        /* PROJETOS INCENTIVADOS */
+        /* IDEM EM AÇÃO */
         .projetos-incentivados {
             padding: 5rem 2rem;
             background: var(--bg-light);
@@ -455,7 +455,7 @@
             max-width: 1280px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
         }
 
@@ -491,6 +491,7 @@
         .incentivado-content p {
             color: var(--text-light);
             margin-bottom: 1rem;
+            line-height: 1.6;
         }
 
         .incentivado-badge {
@@ -557,6 +558,7 @@
         .noticia-content p {
             color: var(--text-light);
             margin-bottom: 1rem;
+            line-height: 1.6;
         }
 
         .read-more {
@@ -572,36 +574,36 @@
             gap: 0.8rem;
         }
 
-        /* DENÚNCIA */
-        .denuncia-section {
-            background: linear-gradient(135deg, #1e293b, #0f172a);
+        /* SEJA VOLUNTÁRIO */
+        .voluntario-section {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
             padding: 4rem 2rem;
             color: var(--white);
         }
 
-        .denuncia-container {
+        .voluntario-container {
             max-width: 1000px;
             margin: 0 auto;
             text-align: center;
         }
 
-        .denuncia-container i {
+        .voluntario-container i {
             font-size: 3rem;
             margin-bottom: 1rem;
             color: var(--secondary-color);
         }
 
-        .denuncia-container h2 {
+        .voluntario-container h2 {
             font-size: 2rem;
             margin-bottom: 1rem;
         }
 
-        .denuncia-container p {
+        .voluntario-container p {
             margin-bottom: 2rem;
             opacity: 0.9;
         }
 
-        .btn-denuncia {
+        .btn-voluntario {
             background: var(--secondary-color);
             color: var(--white);
             padding: 1rem 2rem;
@@ -614,7 +616,7 @@
             transition: var(--transition);
         }
 
-        .btn-denuncia:hover {
+        .btn-voluntario:hover {
             background: var(--secondary-dark);
             transform: translateY(-2px);
         }
@@ -700,8 +702,33 @@
             cursor: pointer;
         }
 
-        .pix-info {
+        .modal h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .dados-bancarios {
             background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: var(--white);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+        }
+
+        .dados-bancarios h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .dados-bancarios p {
+            margin: 0.5rem 0;
+            font-family: monospace;
+            font-size: 1rem;
+        }
+
+        .pix-info {
+            background: linear-gradient(135deg, var(--secondary-color), var(--secondary-dark));
             color: var(--white);
             padding: 1.5rem;
             border-radius: var(--border-radius);
@@ -709,15 +736,35 @@
             margin: 1.5rem 0;
         }
 
-        .pix-copy {
+        .pix-info p {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pix-info strong {
+            font-size: 1.2rem;
+            word-break: break-all;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        .pix-copy, .bank-copy {
             background: var(--white);
             color: var(--primary-color);
             border: none;
-            padding: 0.8rem 1.5rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 50px;
             font-weight: 600;
             cursor: pointer;
-            margin-top: 1rem;
+            margin-top: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .pix-copy:hover, .bank-copy:hover {
+            transform: scale(1.02);
         }
 
         /* RESPONSIVE */
@@ -821,11 +868,11 @@
                 <li><a href="#home">INÍCIO</a></li>
                 <li><a href="#" id="btnPadrinhoNav" class="btn-padrinho-nav">SEJA PADRINHO</a></li>
                 <li><a href="#historia">NOSSA HISTÓRIA</a></li>
-                <li><a href="#projetos-incentivados">PROJ. INCENTIVADOS</a></li>
+                <li><a href="#projetos-acao">IDEM EM AÇÃO</a></li>
                 <li><a href="#projetos">PROJETOS</a></li>
                 <li><a href="#" id="btnTransparenciaNav">TRANSPARÊNCIA</a></li>
                 <li><a href="#noticias">NOTÍCIAS</a></li>
-                <li><a href="#denuncia">DENÚNCIA</a></li>
+                <li><a href="#voluntario">SEJA VOLUNTÁRIO</a></li>
                 <li><a href="#" class="btn-doador-nav" id="btnDoadorNav">DOE AGORA</a></li>
             </ul>
         </div>
@@ -835,13 +882,28 @@
     <div id="modalDoacao" class="modal">
         <div class="modal-content">
             <span class="modal-close">&times;</span>
-            <h2 style="color: var(--primary-color); text-align: center;">Faça sua Doação</h2>
+            <h2><i class="fas fa-hand-holding-heart"></i> Faça sua Doação</h2>
+            
             <div class="pix-info">
                 <p><i class="fas fa-qrcode"></i> Doe via PIX</p>
-                <strong>41.572.637/0001-30</strong>
+                <strong>59.269.960/0001-02</strong>
                 <br>
-                <button class="pix-copy" onclick="copiarPix()">Copiar chave PIX</button>
+                <button class="pix-copy" onclick="copiarPix()">Copiar chave PIX (CNPJ)</button>
             </div>
+
+            <div class="dados-bancarios">
+                <h3><i class="fas fa-university"></i> Transferência Bancária</h3>
+                <p><strong>Banco:</strong> Cora SCD - 403</p>
+                <p><strong>Agência:</strong> 0001</p>
+                <p><strong>Conta:</strong> 5615611-4</p>
+                <p><strong>CNPJ:</strong> 59.269.960/0001-02</p>
+                <p><strong>Favorecido:</strong> Instituto IDEM</p>
+                <button class="bank-copy" onclick="copiarDadosBancarios()">Copiar dados bancários</button>
+            </div>
+
+            <p style="text-align: center; color: var(--text-light); font-size: 0.85rem; margin-top: 1rem;">
+                <i class="fas fa-lock"></i> Sua doação é segura e transforma vidas!
+            </p>
         </div>
     </div>
 
@@ -885,7 +947,7 @@
         </div>
     </section>
 
-    <!-- IMPACTOS SECTION -->
+    <!-- IMPACTOS SECTION ATUALIZADA -->
     <section class="impactos">
         <div class="impactos-container">
             <div class="impactos-header">
@@ -899,16 +961,16 @@
                     <div class="label">Pessoas atendidas</div>
                 </div>
                 <div class="impacto-card">
-                    <div class="number">+200</div>
-                    <div class="label">TONELADAS</div>
+                    <div class="number">+20</div>
+                    <div class="label">Instituições ajudadas</div>
                 </div>
                 <div class="impacto-card">
-                    <div class="number">+18.000</div>
+                    <div class="number">+5.000</div>
                     <div class="label">Atendimentos realizados</div>
                 </div>
                 <div class="impacto-card">
-                    <div class="number">R$ 750.000</div>
-                    <div class="label">Recursos captados</div>
+                    <div class="number">+450</div>
+                    <div class="label">Famílias beneficiadas</div>
                 </div>
             </div>
         </div>
@@ -926,41 +988,57 @@
         </div>
     </section>
 
-    <!-- PROJETOS INCENTIVADOS -->
-    <section id="projetos-incentivados" class="projetos-incentivados">
+    <!-- IDEM EM AÇÃO - PROJETOS INCENTIVADOS ATUALIZADOS -->
+    <section id="projetos-acao" class="projetos-incentivados">
         <div class="section-header">
-            <div class="tag">PROJETOS INCENTIVADOS</div>
-            <h2>Conheça nossos projetos com incentivo fiscal</h2>
+            <div class="tag">IDEM EM AÇÃO</div>
+            <h2>Conheça nossos projetos</h2>
         </div>
         <div class="incentivados-grid">
             <div class="incentivado-card">
                 <img src="https://via.placeholder.com/400x200?text=Curso+de+Manicure" alt="Curso de Manicure">
                 <div class="incentivado-content">
-                    <h3>Curso de Manicure</h3>
+                    <h3>Mulheres de Fibra</h3>
                     <p>Capacitação profissional gratuita para mulheres em vulnerabilidade social.</p>
-                    <span class="incentivado-badge">Lei de Incentivo</span>
+                    <span class="incentivado-badge">Mulheres Empreendedoras</span>
+                </div>
+            </div>
+            <div class="incentivado-card">
+                <img src="https://via.placeholder.com/400x200?text=Curso+Terceiro+Setor" alt="Curso Terceiro Setor">
+                <div class="incentivado-content">
+                    <h3>Curso de Formação no Terceiro Setor</h3>
+                    <p>Capacitação profissional gratuita para desenvolvimento de profissionais do terceiro setor.</p>
+                    <span class="incentivado-badge">Avante 3 Setor</span>
                 </div>
             </div>
             <div class="incentivado-card">
                 <img src="https://via.placeholder.com/400x200?text=Inclusão+Social" alt="Inclusão Social">
                 <div class="incentivado-content">
                     <h3>Inclusão Social</h3>
-                    <p>Programa de integração social com rodas de conversa e desenvolvimento pessoal.</p>
-                    <span class="incentivado-badge">Lei Rouanet</span>
+                    <p>Projeto social Dagrateen com rodas de conversa e desenvolvimento pessoal das crianças e adolescentes em vulnerabilidade social da comunidade Poço da Draga.</p>
+                    <span class="incentivado-badge">Diretrizes do ECA</span>
                 </div>
             </div>
             <div class="incentivado-card">
-                <img src="https://via.placeholder.com/400x200?text=Esporte+e+Cidadania" alt="Esporte e Cidadania">
+                <img src="https://via.placeholder.com/400x200?text=Cultura+Viva" alt="Cultura Viva">
                 <div class="incentivado-content">
-                    <h3>Esporte e Cidadania</h3>
-                    <p>Atividades esportivas para crianças e adolescentes.</p>
-                    <span class="incentivado-badge">Lei de Incentivo ao Esporte</span>
+                    <h3>Cultura Viva</h3>
+                    <p>Mural feito por artistas locais de arte urbana para valorização da cultura local urbana e fomentação dos artistas locais.</p>
+                    <span class="incentivado-badge">Arte & Cultura</span>
+                </div>
+            </div>
+            <div class="incentivado-card">
+                <img src="https://via.placeholder.com/400x200?text=60+Ativo" alt="60+ Ativo">
+                <div class="incentivado-content">
+                    <h3>Projeto 60+ Ativo</h3>
+                    <p>Atividades físicas para pessoa idosa com objetivo de melhorar a qualidade de vida e fomentar a saúde da população idosa em toda a Fortaleza.</p>
+                    <span class="incentivado-badge">Viver Bem Idoso</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PROJETOS -->
+    <!-- PROJETOS SOCIAIS -->
     <section id="projetos" class="projetos-incentivados" style="background: var(--white);">
         <div class="section-header">
             <div class="tag">PROJETOS SOCIAIS</div>
@@ -971,27 +1049,27 @@
                 <img src="https://via.placeholder.com/400x200?text=Cultura+Viva" alt="Cultura Viva">
                 <div class="incentivado-content">
                     <h3>Cultura Viva</h3>
-                    <p>Oficinas de música, dança, teatro e artesanato para todas as idades.</p>
+                    <p>Mural feito por artistas locais de arte urbana para valorização da cultura local.</p>
                 </div>
             </div>
             <div class="incentivado-card">
                 <img src="https://via.placeholder.com/400x200?text=Qualificação+Profissional" alt="Qualificação Profissional">
                 <div class="incentivado-content">
                     <h3>Qualificação Profissional</h3>
-                    <p>Cursos preparando jovens e adultos para o mercado de trabalho.</p>
+                    <p>Cursos preparatórios para o mercado de trabalho e qualificação profissional.</p>
                 </div>
             </div>
             <div class="incentivado-card">
-                <img src="https://via.placeholder.com/400x200?text=Apoio+Alimentar" alt="Apoio Alimentar">
+                <img src="https://via.placeholder.com/400x200?text=Esporte+que+Gera+Vida" alt="Esporte que Gera Vida">
                 <div class="incentivado-content">
-                    <h3>Apoio Alimentar</h3>
-                    <p>Distribuição de cestas básicas para famílias em situação de insegurança alimentar.</p>
+                    <h3>Atividade que Gera Vida</h3>
+                    <p>O Esporte como ferramenta de prevenção e cuidado com a Saúde.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- NOTÍCIAS -->
+    <!-- NOTÍCIAS ATUALIZADAS -->
     <section id="noticias" class="noticias">
         <div class="section-header">
             <div class="tag">NOTÍCIAS</div>
@@ -999,42 +1077,42 @@
         </div>
         <div class="noticias-grid">
             <div class="noticia-card">
-                <img src="https://via.placeholder.com/400x200?text=Notícia+1" alt="Notícia">
+                <img src="https://via.placeholder.com/400x200?text=Premiação+Vozes+do+IDEM" alt="Premiação Vozes do IDEM">
                 <div class="noticia-content">
                     <div class="noticia-date">15 de Março, 2025</div>
-                    <h3>Instituto IDEM realiza formatura de mais 50 mulheres no curso de manicure</h3>
-                    <p>Evento celebrou a conclusão do curso que capacitou mulheres para o mercado de trabalho...</p>
+                    <h3>Instituto IDEM realiza a primeira edição da premiação Vozes do IDEM</h3>
+                    <p>Evento celebrou e premiou personalidades e instituições que fomentam o social no Nordeste...</p>
                     <a href="#" class="read-more">Leia mais <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
             <div class="noticia-card">
-                <img src="https://via.placeholder.com/400x200?text=Notícia+2" alt="Notícia">
+                <img src="https://via.placeholder.com/400x200?text=Campanha+Avante+3+Setor" alt="Campanha Avante 3 Setor">
                 <div class="noticia-content">
                     <div class="noticia-date">10 de Março, 2025</div>
-                    <h3>Campanha #TransformandoVidas arrecada mais de R$ 100 mil em doações</h3>
-                    <p>Recursos serão destinados para a ampliação dos projetos sociais da instituição...</p>
+                    <h3>Campanha #Avante3Setor ajudou mais de 10 OSC de pequeno porte</h3>
+                    <p>Iniciativa promoveu a profissionalização e regulamentação para o avanço do social...</p>
                     <a href="#" class="read-more">Leia mais <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
             <div class="noticia-card">
-                <img src="https://via.placeholder.com/400x200?text=Notícia+3" alt="Notícia">
+                <img src="https://via.placeholder.com/400x200?text=Homenagem+IDEM" alt="Homenagem IDEM">
                 <div class="noticia-content">
                     <div class="noticia-date">5 de Março, 2025</div>
-                    <h3>IDEM recebe certificação de transparência e boas práticas</h3>
-                    <p>Reconhecimento reforça o compromisso da instituição com a prestação de contas...</p>
+                    <h3>IDEM recebe Homenagem por boas práticas na gestão e acompanhamento de projetos sociais</h3>
+                    <p>Reconhecimento reforça o compromisso da instituição com as boas práticas e gestão do Terceiro Setor Cearense...</p>
                     <a href="#" class="read-more">Leia mais <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- DENÚNCIA -->
-    <section id="denuncia" class="denuncia-section">
-        <div class="denuncia-container">
-            <i class="fas fa-exclamation-triangle"></i>
-            <h2>Canal de Denúncia</h2>
-            <p>Nosso compromisso é com a transparência e a ética. Se você presenciou ou tem conhecimento de alguma irregularidade, utilize nosso canal de denúncia.</p>
-            <a href="#" class="btn-denuncia"><i class="fas fa-shield-alt"></i> FAZER DENÚNCIA</a>
+    <!-- SEJA VOLUNTÁRIO (substituindo Denúncia) -->
+    <section id="voluntario" class="voluntario-section">
+        <div class="voluntario-container">
+            <i class="fas fa-hands-helping"></i>
+            <h2>Seja um Voluntário</h2>
+            <p>Seu tempo e talento podem transformar vidas! Junte-se a nós e faça parte dessa corrente do bem. Voluntários são essenciais para ampliar nosso impacto e levar esperança a quem mais precisa.</p>
+            <a href="#" class="btn-voluntario"><i class="fas fa-heart"></i> QUERO SER VOLUNTÁRIO</a>
         </div>
     </section>
 
@@ -1049,9 +1127,10 @@
             <div class="footer-section">
                 <h4>Links Rápidos</h4>
                 <p><a href="#home">Início</a></p>
+                <p><a href="#projetos-acao">IDEM em Ação</a></p>
                 <p><a href="#projetos">Projetos</a></p>
                 <p><a href="#noticias">Notícias</a></p>
-                <p><a href="#denuncia">Denúncia</a></p>
+                <p><a href="#voluntario">Seja Voluntário</a></p>
             </div>
             <div class="footer-section">
                 <h4>Contato</h4>
@@ -1126,9 +1205,16 @@
         });
 
         function copiarPix() {
-            const pix = '41.572.637/0001-30';
+            const pix = '59.269.960/0001-02';
             navigator.clipboard.writeText(pix).then(() => {
                 alert('Chave PIX copiada com sucesso!');
+            });
+        }
+
+        function copiarDadosBancarios() {
+            const dados = `Banco: Cora SCD - 403\nAgência: 0001\nConta: 5615611-4\nCNPJ: 59.269.960/0001-02\nFavorecido: Instituto IDEM`;
+            navigator.clipboard.writeText(dados).then(() => {
+                alert('Dados bancários copiados com sucesso!');
             });
         }
 
@@ -1153,6 +1239,15 @@
             e.preventDefault();
             alert('Portal da Transparência em desenvolvimento. Em breve você poderá acompanhar todas as nossas prestações de contas!');
         });
+
+        // Botão Voluntário
+        const btnVoluntario = document.querySelector('.btn-voluntario');
+        if (btnVoluntario) {
+            btnVoluntario.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('Cadastro de voluntário em breve! Entre em contato conosco para mais informações.');
+            });
+        }
     </script>
 </body>
 </html>
