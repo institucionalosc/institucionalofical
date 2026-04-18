@@ -22,13 +22,13 @@
         }
 
         :root {
-            --primary-color: #2e7d32;      /* Verde escuro principal */
-            --secondary-color: #4caf50;     /* Verde médio */
-            --accent-color: #81c784;        /* Verde claro */
-            --light-green: #e8f5e8;         /* Verde muito claro para fundos */
-            --text-dark: #1b3b1b;           /* Verde quase preto para textos */
-            --text-light: #2e5e2e;           /* Verde médio para textos */
-            --bg-light: #f4f9f4;             /* Fundo com tom verde suave */
+            --primary-color: #2e7d32;
+            --secondary-color: #4caf50;
+            --accent-color: #81c784;
+            --light-green: #e8f5e8;
+            --text-dark: #1b3b1b;
+            --text-light: #2e5e2e;
+            --bg-light: #f4f9f4;
             --white: #ffffff;
             --shadow: 0 15px 40px rgba(46, 125, 50, 0.15);
             --border-radius: 16px;
@@ -133,7 +133,6 @@
             display: none !important;
         }
 
-        /* NOVO BOTÃO TRANSPARÊNCIA */
         .btn-transparencia {
             background: transparent;
             color: var(--primary-color) !important;
@@ -287,6 +286,96 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
+        /* MODAL CONTEÚDO (MATÉRIA) */
+        .materia-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .materia-content {
+            max-width: 800px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            position: relative;
+            animation: modalSlide 0.3s ease;
+        }
+
+        .materia-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .materia-header h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .materia-header h2 i {
+            font-size: 1.8rem;
+        }
+
+        .materia-close {
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: color 0.3s;
+        }
+
+        .materia-close:hover {
+            color: var(--primary-color);
+        }
+
+        .materia-imagem {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+        }
+
+        .materia-data {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .materia-texto {
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .materia-texto p {
+            margin-bottom: 1rem;
+        }
+
+        .materia-texto strong {
+            color: var(--primary-color);
+        }
+
         /* MODAL TRANSPARÊNCIA */
         .transparencia-modal {
             display: none;
@@ -330,10 +419,6 @@
             gap: 1rem;
         }
 
-        .transparencia-header h2 i {
-            font-size: 2.5rem;
-        }
-
         .transparencia-close {
             font-size: 2.5rem;
             cursor: pointer;
@@ -375,11 +460,6 @@
             margin: 0.5rem 0;
         }
 
-        .resumo-item .label {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
         .transparencia-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -397,7 +477,6 @@
 
         .transparencia-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--card-hover);
         }
 
         .transparencia-card img {
@@ -414,18 +493,8 @@
             color: var(--primary-color);
             font-size: 1.4rem;
             margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
-        .transparencia-info p {
-            color: var(--text-light);
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        /* Estilo para tabela de valores */
         .detalhe-valores {
             background: var(--light-green);
             padding: 1rem;
@@ -440,10 +509,6 @@
             border-bottom: 1px dashed var(--accent-color);
         }
 
-        .detalhe-valores .linha:last-child {
-            border-bottom: none;
-        }
-
         .detalhe-valores .total {
             font-weight: 800;
             color: var(--primary-color);
@@ -453,7 +518,6 @@
             border-top: 2px solid var(--primary-color);
         }
 
-        /* ESTILO PARA TERMO DE PARCERIA (apenas para o projeto Manicure) */
         .termo-parceria {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: var(--white);
@@ -461,27 +525,6 @@
             border-radius: 10px;
             margin: 1rem 0;
             text-align: center;
-            border: 2px dashed var(--accent-color);
-        }
-
-        .termo-parceria i {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--accent-color);
-        }
-
-        .termo-parceria p {
-            font-size: 1.1rem;
-            margin: 0;
-            color: var(--white);
-            font-weight: 600;
-        }
-
-        .termo-parceria strong {
-            display: block;
-            font-size: 1.3rem;
-            margin-top: 0.5rem;
-            color: var(--accent-color);
         }
 
         .status-badge {
@@ -490,13 +533,7 @@
             border-radius: 50px;
             font-size: 0.8rem;
             font-weight: 700;
-            text-transform: uppercase;
             margin-top: 1rem;
-        }
-
-        .status-concluido {
-            background: #4caf50;
-            color: white;
         }
 
         .status-andamento {
@@ -504,12 +541,7 @@
             color: white;
         }
 
-        .status-previsto {
-            background: #2196f3;
-            color: white;
-        }
-
-        /* MODAL GALERIA */
+        /* GALERIA MODAL */
         .galeria-modal {
             display: none;
             position: fixed;
@@ -561,7 +593,7 @@
 
         .galeria-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
@@ -570,33 +602,34 @@
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .galeria-item:hover {
+            transform: translateY(-5px);
         }
 
         .galeria-item img {
             width: 100%;
-            height: 250px;
+            height: 220px;
             object-fit: cover;
             transition: transform 0.5s;
         }
 
         .galeria-item:hover img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .galeria-descricao {
-            padding: 1.5rem;
+            padding: 1.2rem;
+            text-align: center;
         }
 
-        .galeria-descricao h3 {
+        .galeria-descricao h4 {
             color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
-        }
-
-        .galeria-descricao p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 1.1rem;
+            font-weight: 600;
         }
 
         /* HERO SECTION */
@@ -607,19 +640,6 @@
             background: linear-gradient(135deg, var(--white) 0%, var(--light-green) 100%);
             padding: 8rem 2rem 4rem;
             position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 80%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(76, 175, 80, 0.05) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: 0;
         }
 
         .hero-container {
@@ -629,8 +649,6 @@
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
-            position: relative;
-            z-index: 1;
         }
 
         .hero-content h1 {
@@ -638,7 +656,6 @@
             line-height: 1.2;
             margin-bottom: 1.5rem;
             font-weight: 800;
-            color: var(--text-dark);
         }
 
         .hero-content h1 span {
@@ -650,7 +667,6 @@
             font-size: clamp(1rem, 2vw, 1.2rem);
             color: var(--text-light);
             margin-bottom: 2.5rem;
-            max-width: 90%;
         }
 
         .btn {
@@ -662,21 +678,16 @@
             border-radius: 50px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
             font-size: 0.9rem;
             transition: all 0.3s;
-            border: none;
             box-shadow: 0 10px 20px rgba(46, 125, 50, 0.3);
             cursor: pointer;
+            border: none;
         }
 
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 30px rgba(46, 125, 50, 0.4);
-        }
-
-        .hero-image {
-            position: relative;
         }
 
         .hero-image img {
@@ -687,23 +698,10 @@
             border: 4px solid var(--white);
         }
 
-        .hero-image::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            width: 100%;
-            height: 100%;
-            border: 3px solid var(--accent-color);
-            border-radius: var(--border-radius);
-            z-index: -1;
-        }
-
-        /* NOSSA HISTÓRIA */
+        /* HISTÓRIA */
         .historia-section {
             padding: 5rem 2rem;
             background: var(--white);
-            position: relative;
         }
 
         .historia-container {
@@ -716,7 +714,6 @@
             font-size: clamp(2rem, 4vw, 3rem);
             margin-bottom: 3rem;
             font-weight: 800;
-            color: var(--text-dark);
             position: relative;
             padding-bottom: 1rem;
         }
@@ -746,16 +743,11 @@
             background: var(--light-green);
             padding: 3rem;
             border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
             border-left: 6px solid var(--primary-color);
         }
 
         .historia-texto p {
             margin-bottom: 1.5rem;
-        }
-
-        .historia-texto p:last-child {
-            margin-bottom: 0;
         }
 
         .historia-imagem img {
@@ -771,18 +763,11 @@
             background: var(--light-green);
         }
 
-        .missao-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
         .missao-card {
             background: var(--white);
             padding: 4rem;
             border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            position: relative;
+            text-align: center;
             border: 2px solid var(--accent-color);
         }
 
@@ -801,7 +786,6 @@
         .missao-card p {
             font-size: 1.2rem;
             color: var(--text-light);
-            line-height: 1.8;
         }
 
         /* PROJETOS */
@@ -810,16 +794,12 @@
             background: var(--white);
         }
 
-        .projetos-container {
+        .projetos-grid {
             max-width: 1300px;
             margin: 0 auto;
-        }
-
-        .projetos-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2.5rem;
-            margin-top: 3rem;
         }
 
         .projeto-card {
@@ -827,9 +807,9 @@
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
+            cursor: pointer;
             transition: all 0.3s;
             border: 1px solid var(--accent-color);
-            cursor: pointer;
         }
 
         .projeto-card:hover {
@@ -863,12 +843,10 @@
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--primary-color);
-            font-weight: 700;
         }
 
         .projeto-info p {
             color: var(--text-light);
-            line-height: 1.6;
             margin-bottom: 1rem;
         }
 
@@ -880,7 +858,6 @@
             border-radius: 50px;
             font-size: 0.8rem;
             font-weight: 600;
-            text-transform: uppercase;
         }
 
         .foto-count {
@@ -892,37 +869,12 @@
             padding: 0.5rem 1rem;
             border-radius: 50px;
             font-size: 0.9rem;
-            z-index: 2;
-        }
-
-        .foto-count i {
-            margin-right: 0.3rem;
         }
 
         /* DIRETORIA */
         .diretoria-section {
             padding: 5rem 2rem;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            position: relative;
-            overflow: hidden;
-        }
-
-        .diretoria-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><path d="M0 0 L100 100 M100 0 L0 100" stroke="white" stroke-width="1"/></svg>');
-            background-size: 30px 30px;
-        }
-
-        .diretoria-container {
-            max-width: 1300px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
         }
 
         .diretoria-container .section-title {
@@ -934,6 +886,8 @@
         }
 
         .diretoria-content {
+            max-width: 1300px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
@@ -942,14 +896,11 @@
             backdrop-filter: blur(10px);
             padding: 3rem;
             border-radius: var(--border-radius);
-            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .diretoria-imagem img {
             width: 100%;
-            height: auto;
             border-radius: var(--border-radius);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             border: 4px solid var(--white);
         }
 
@@ -960,7 +911,6 @@
         .diretoria-texto h3 {
             font-size: 2rem;
             margin-bottom: 1.5rem;
-            font-weight: 700;
         }
 
         .diretoria-lista {
@@ -969,19 +919,12 @@
 
         .diretoria-lista li {
             margin-bottom: 1rem;
-            font-size: 1.1rem;
             display: flex;
             align-items: center;
             gap: 1rem;
             background: rgba(255, 255, 255, 0.1);
             padding: 0.8rem 1.2rem;
             border-radius: 50px;
-            backdrop-filter: blur(5px);
-        }
-
-        .diretoria-lista li i {
-            font-size: 1.3rem;
-            color: var(--accent-color);
         }
 
         /* FOOTER */
@@ -1003,13 +946,11 @@
             font-size: 1.3rem;
             margin-bottom: 1.5rem;
             color: var(--accent-color);
-            font-weight: 600;
         }
 
         .footer-section p, .footer-section a {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            transition: color 0.3s;
             line-height: 2;
         }
 
@@ -1025,13 +966,6 @@
 
         .social-links a {
             font-size: 1.8rem;
-            color: var(--white);
-            transition: all 0.3s;
-        }
-
-        .social-links a:hover {
-            color: var(--accent-color);
-            transform: translateY(-3px);
         }
 
         .copyright {
@@ -1039,58 +973,19 @@
             padding-top: 3rem;
             margin-top: 3rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
         }
 
         /* MEDIA QUERIES */
         @media screen and (max-width: 968px) {
-            .hero-container,
-            .historia-grid,
-            .diretoria-content {
+            .hero-container, .historia-grid, .diretoria-content {
                 grid-template-columns: 1fr;
-                gap: 3rem;
             }
-
-            .hero-content {
-                order: 2;
-                text-align: center;
-            }
-
-            .hero-content p {
-                max-width: 100%;
-            }
-
-            .hero-image {
-                order: 1;
-                max-width: 600px;
-                margin: 0 auto;
-            }
-
-            .historia-texto {
-                order: 2;
-            }
-
-            .historia-imagem {
-                order: 1;
-            }
-
-            .nav-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .btn-transparencia {
-                margin-right: 0;
-                margin-bottom: 0.5rem;
-            }
+            .hero-content { order: 2; text-align: center; }
+            .hero-image { order: 1; }
         }
 
         @media screen and (max-width: 768px) {
-            .hamburger {
-                display: block;
-            }
-
+            .hamburger { display: block; }
             .nav-menu {
                 position: fixed;
                 left: -100%;
@@ -1099,79 +994,13 @@
                 background: var(--white);
                 width: 100%;
                 text-align: center;
-                padding: 2rem 0;
-                box-shadow: var(--shadow);
+                padding: 2rem;
                 transition: 0.3s;
                 gap: 1.5rem;
             }
-
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .projetos-grid {
-                grid-template-columns: 1fr;
-                max-width: 450px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .footer-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-
-            .diretoria-content {
-                padding: 1.5rem;
-            }
-
-            .missao-card {
-                padding: 2rem;
-            }
-
-            .galeria-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .transparencia-resumo {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .nav-container {
-                padding: 0 1rem;
-            }
-
-            .hero {
-                padding: 7rem 1rem 3rem;
-            }
-
-            .btn {
-                width: 100%;
-            }
-
-            .historia-texto,
-            .missao-card {
-                padding: 1.5rem;
-            }
-
-            .modal-content {
-                padding: 2rem;
-            }
-
-            .transparencia-content {
-                padding: 1rem;
-            }
-
-            .transparencia-header h2 {
-                font-size: 1.5rem;
-            }
+            .nav-menu.active { left: 0; }
+            .nav-buttons { flex-direction: column; width: 100%; }
+            .projetos-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -1180,11 +1009,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">CIDH</a>
-            
-            <div class="hamburger">
-                <i class="fas fa-bars"></i>
-            </div>
-
+            <div class="hamburger"><i class="fas fa-bars"></i></div>
             <ul class="nav-menu">
                 <li><a href="#home">Início</a></li>
                 <li><a href="#historia">Nossa História</a></li>
@@ -1203,29 +1028,16 @@
     <div id="modalDoacao" class="modal">
         <div class="modal-content">
             <span class="modal-close">&times;</span>
-            <div class="modal-icon">
-                <i class="fas fa-hand-holding-heart"></i>
-            </div>
+            <div class="modal-icon"><i class="fas fa-hand-holding-heart"></i></div>
             <h2>Faça uma Doação</h2>
-            
             <div class="modal-mensagem">
-                <i class="fas fa-heart" style="color: var(--primary-color); margin-right: 0.5rem;"></i>
-                Sua doação transforma vidas! Com seu apoio, podemos continuar realizando projetos que levam educação, cultura e oportunidades para quem mais precisa. Qualquer valor faz a diferença!
+                <i class="fas fa-heart" style="color: var(--primary-color);"></i> Sua doação transforma vidas! Com seu apoio, podemos continuar realizando projetos que levam educação, cultura e oportunidades para quem mais precisa.
             </div>
-
             <div class="pix-info">
-                <p><i class="fas fa-qrcode" style="margin-right: 0.5rem;"></i> Doe via PIX</p>
-                <strong>41.572.637/0001-30</strong>
-                <br>
-                <button class="pix-copy" onclick="copiarPix()">
-                    <i class="fas fa-copy"></i> Copiar chave PIX
-                </button>
+                <p><i class="fas fa-qrcode"></i> Doe via PIX</p>
+                <strong>41.572.637/0001-30</strong><br>
+                <button class="pix-copy" onclick="copiarPix()"><i class="fas fa-copy"></i> Copiar chave PIX</button>
             </div>
-
-            <p style="text-align: center; color: var(--text-light); margin-top: 1rem;">
-                <i class="fas fa-check-circle" style="color: var(--primary-color);"></i>
-                Sua doação é muito importante para nós!
-            </p>
         </div>
     </div>
 
@@ -1233,267 +1045,31 @@
     <div id="transparenciaModal" class="transparencia-modal">
         <div class="transparencia-content">
             <div class="transparencia-header">
-                <h2>
-                    <i class="fas fa-chart-line"></i>
-                    Portal da Transparência
-                </h2>
+                <h2><i class="fas fa-chart-line"></i> Portal da Transparência</h2>
                 <span class="transparencia-close">&times;</span>
             </div>
-
-            <!-- Resumo Financeiro -->
             <div class="transparencia-resumo">
-                <div class="resumo-item">
-                    <i class="fas fa-hand-holding-heart"></i>
-                    <div class="valor">R$ 6.780,00</div>
-                    <div class="label">Total Arrecadado (2024)</div>
-                </div>
-                <div class="resumo-item">
-                    <i class="fas fa-users"></i>
-                    <div class="valor">385</div>
-                    <div class="label">Pessoas Atendidas</div>
-                </div>
-                <div class="resumo-item">
-                    <i class="fas fa-project-diagram"></i>
-                    <div class="valor">7</div>
-                    <div class="label">Projetos Ativos</div>
-                </div>
-                <div class="resumo-item">
-                    <i class="fas fa-handshake"></i>
-                    <div class="valor">3</div>
-                    <div class="label">Termo de Parceria</div>
-                </div>
+                <div class="resumo-item"><i class="fas fa-hand-holding-heart"></i><div class="valor">R$ 6.780,00</div><div class="label">Total Arrecadado (2024)</div></div>
+                <div class="resumo-item"><i class="fas fa-users"></i><div class="valor">385</div><div class="label">Pessoas Atendidas</div></div>
+                <div class="resumo-item"><i class="fas fa-project-diagram"></i><div class="valor">7</div><div class="label">Projetos Ativos</div></div>
             </div>
-
-            <!-- Grid de Projetos -->
-            <div class="transparencia-grid" id="transparenciaGrid">
-                <!-- Projeto 1 - Curso de Manicure (APENAS ESTE COM TERMO DE PARCERIA) -->
-                <div class="transparencia-card">
-                    <img src="mani_01.jpeg" alt="Curso de Manicure" onerror="this.src='https://via.placeholder.com/400x200?text=Curso+de+Manicure'">
-                    <div class="transparencia-info">
-                        <h3><i class="fas fa-cut"></i> Curso de Manicure</h3>
-                        <p>Capacitação profissional gratuita para mulheres em situação de vulnerabilidade, oferecendo formação completa em manicure e pedicure.</p>
-                        
-                        <!-- TERMO DE PARCERIA - APENAS AQUI -->
-                        <div class="termo-parceria">
-                            <i class="fas fa-handshake"></i>
-                            <p>Projeto executado por</p>
-                            <strong>TERMO DE PARCERIA</strong>
-                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">SESC - Serviço Social do Comércio</p>
-                        </div>
-
-                        <p><i class="fas fa-users"></i> <strong>33 mulheres beneficiadas</strong></p>
-                        <p><i class="fas fa-calendar"></i> Período: Maio - Junho/2024</p>
-                        <span class="status-badge status-andamento">Em Andamento</span>
-                    </div>
-                </div>
-
-                <!-- Projeto 2 - Inclusão Social (COM TABELA DE VALORES) -->
-                <div class="transparencia-card">
-                    <img src="roda01.jpeg" alt="Inclusão Social" onerror="this.src='https://via.placeholder.com/400x200?text=Inclusão+Social'">
-                    <div class="transparencia-info">
-                        <h3><i class="fas fa-hands-helping"></i> Inclusão Social</h3>
-                        <p>Programa de integração social que atende pessoas da comunidade com atividades inclusivas, rodas de conversa e desenvolvimento pessoal.</p>
-                        
-                        <!-- TABELA DE VALORES NORMAL -->
-                        <div class="detalhe-valores">
-                            <div class="linha">
-                                <span>Investimento Total:</span>
-                                <strong>R$ 5.000,00</strong>
-                            </div>
-                            <div class="linha">
-                                <span>Facilitadores:</span>
-                                <span>R$ 3.000,00</span>
-                            </div>
-                            <div class="linha">
-                                <span>Material Didático:</span>
-                                <span>R$ 500,00</span>
-                            </div>
-                            <div class="linha">
-                                <span>Lanches e Acolhimento:</span>
-                                <span>R$ 780,00</span>
-                            </div>
-                            <div class="linha">
-                                <span>Eventos Comunitários:</span>
-                                <span>R$ 720,00</span>
-                            </div>
-                            <div class="total">
-                                Total: R$ 5.000,00
-                            </div>
-                        </div>
-
-                        <p><i class="fas fa-users"></i> <strong>85 participantes diretos</strong></p>
-                        <p><i class="fas fa-calendar"></i> Período: Fevereiro - Novembro/2024</p>
-                        <span class="status-badge status-andamento">Em Andamento</span>
-                    </div>
-                </div>
-
-                <!-- Projeto 3 - Esporte e Cidadania (COM TABELA DE VALORES) -->
-                <div class="transparencia-card">
-                    <img src="jiu_010.jpeg" alt="Esporte e Cidadania" onerror="this.src='https://via.placeholder.com/400x200?text=Esporte+e+Cidadania'">
-                    <div class="transparencia-info">
-                        <h3><i class="fas fa-futbol"></i> Esporte e Cidadania</h3>
-                        <p>Promovendo saúde, disciplina e trabalho em equipe através de atividades esportivas para crianças e adolescentes.</p>
-                        
-                        <!-- TABELA DE VALORES NORMAL -->
-                        <div class="detalhe-valores">
-                            <div class="linha">
-                                <span>Investimento Total:</span>
-                                <strong>R$ 52.300</strong>
-                            </div>
-                            <div class="linha">
-                                <span>Professores/Treinadores:</span>
-                                <span>R$ 24.000</span>
-                            </div>
-                            <div class="linha">
-                                <span>Equipamentos Esportivos:</span>
-                                <span>R$ 15.800</span>
-                            </div>
-                            <div class="linha">
-                                <span>Uniformes:</span>
-                                <span>R$ 7.500</span>
-                            </div>
-                            <div class="linha">
-                                <span>Transporte:</span>
-                                <span>R$ 5.000</span>
-                            </div>
-                            <div class="total">
-                                Total: R$ 52.300
-                            </div>
-                        </div>
-
-                        <p><i class="fas fa-users"></i> <strong>150 crianças e adolescentes</strong></p>
-                        <p><i class="fas fa-calendar"></i> Período: Janeiro - Dezembro/2024</p>
-                        <span class="status-badge status-concluido">Concluído</span>
-                    </div>
-                </div>
-
-                <!-- Projeto 4 - Cultura Viva (COM TABELA DE VALORES) -->
-                <div class="transparencia-card">
-                    <img src="cut_02.jpeg" alt="Cultura Viva" onerror="this.src='https://via.placeholder.com/400x200?text=Cultura+Viva'">
-                    <div class="transparencia-info">
-                        <h3><i class="fas fa-palette"></i> Cultura Viva</h3>
-                        <p>Oficinas de música, dança, teatro e artesanato para todas as idades, valorizando a cultura local.</p>
-                        
-                        <!-- TABELA DE VALORES NORMAL -->
-                        <div class="detalhe-valores">
-                            <div class="linha">
-                                <span>Investimento Total:</span>
-                                <strong>R$ 63.450</strong>
-                            </div>
-                            <div class="linha">
-                                <span>Oficineiros/Artistas:</span>
-                                <span>R$ 28.000</span>
-                            </div>
-                            <div class="linha">
-                                <span>Materiais Artísticos:</span>
-                                <span>R$ 18.500</span>
-                            </div>
-                            <div class="linha">
-                                <span>Instrumentos Musicais:</span>
-                                <span>R$ 12.450</span>
-                            </div>
-                            <div class="linha">
-                                <span>Apresentações:</span>
-                                <span>R$ 4.500</span>
-                            </div>
-                            <div class="total">
-                                Total: R$ 63.450
-                            </div>
-                        </div>
-
-                        <p><i class="fas fa-users"></i> <strong>200 participantes</strong></p>
-                        <p><i class="fas fa-calendar"></i> Período: Março - Novembro/2024</p>
-                        <span class="status-badge status-andamento">Em Andamento</span>
-                    </div>
-                </div>
-
-                <!-- Projeto 5 - Qualificação Profissional (COM TABELA DE VALORES) -->
-                <div class="transparencia-card">
-                    <img src="conv_01.jpeg" alt="Qualificação Profissional" onerror="this.src='https://via.placeholder.com/400x200?text=Qualificação+Profissional'">
-                    <div class="transparencia-info">
-                        <h3><i class="fas fa-briefcase"></i> Qualificação Profissional</h3>
-                        <p>Cursos profissionalizantes preparando jovens e adultos para o mercado de trabalho.</p>
-                        
-                        <!-- TABELA DE VALORES NORMAL -->
-                        <div class="detalhe-valores">
-                            <div class="linha">
-                                <span>Investimento Total:</span>
-                                <strong>R$ 74.280</strong>
-                            </div>
-                            <div class="linha">
-                                <span>Instrutores:</span>
-                                <span>R$ 32.000</span>
-                            </div>
-                            <div class="linha">
-                                <span>Material Didático:</span>
-                                <span>R$ 15.780</span>
-                            </div>
-                            <div class="linha">
-                                <span>Certificações:</span>
-                                <span>R$ 8.500</span>
-                            </div>
-                            <div class="linha">
-                                <span>Equipamentos:</span>
-                                <span>R$ 18.000</span>
-                            </div>
-                            <div class="total">
-                                Total: R$ 74.280
-                            </div>
-                        </div>
-
-                        <p><i class="fas fa-users"></i> <strong>180 jovens e adultos</strong></p>
-                        <p><i class="fas fa-calendar"></i> Período: Janeiro - Dezembro/2024</p>
-                        <span class="status-badge status-previsto">Previsto</span>
-                    </div>
-                </div>
-
-                <!-- Projeto 6 - Apoio Alimentar (COM TABELA DE VALORES) -->
-                <div class="transparencia-card">
-                    <img src="https://via.placeholder.com/400x200?text=Apoio+Alimentar" alt="Apoio Alimentar">
-                    <div class="transparencia-info">
-                        <h3><i class="fas fa-apple-alt"></i> Apoio Alimentar</h3>
-                        <p>Distribuição de cestas básicas e suplementação alimentar para famílias em situação de insegurança alimentar.</p>
-                        
-                        <!-- TABELA DE VALORES NORMAL -->
-                        <div class="detalhe-valores">
-                            <div class="linha">
-                                <span>Investimento Total:</span>
-                                <strong>R$ 38.500</strong>
-                            </div>
-                            <div class="linha">
-                                <span>Cestas Básicas:</span>
-                                <span>R$ 28.000</span>
-                            </div>
-                            <div class="linha">
-                                <span>Logística/Entrega:</span>
-                                <span>R$ 6.500</span>
-                            </div>
-                            <div class="linha">
-                                <span>Acompanhamento:</span>
-                                <span>R$ 4.000</span>
-                            </div>
-                            <div class="total">
-                                Total: R$ 38.500
-                            </div>
-                        </div>
-
-                        <p><i class="fas fa-users"></i> <strong>75 famílias atendidas</strong></p>
-                        <p><i class="fas fa-calendar"></i> Período: Abril - Dezembro/2024</p>
-                        <span class="status-badge status-andamento">Em Andamento</span>
-                    </div>
-                </div>
+            <div class="transparencia-grid">
+                <div class="transparencia-card"><img src="https://raw.githubusercontent.com/institucionalosc/institucionalofical/main/mani_01.jpeg" onerror="this.src='https://via.placeholder.com/400x200'"><div class="transparencia-info"><h3>Curso de Manicure</h3><div class="termo-parceria"><i class="fas fa-handshake"></i><p>Termo de Parceria - SESC</p></div><span class="status-badge status-andamento">Em Andamento</span></div></div>
+                <div class="transparencia-card"><img src="https://raw.githubusercontent.com/institucionalosc/institucionalofical/main/roda01.jpeg" onerror="this.src='https://via.placeholder.com/400x200'"><div class="transparencia-info"><h3>Inclusão Social</h3><div class="detalhe-valores"><div class="linha"><span>Investimento:</span><strong>R$ 5.000,00</strong></div><div class="total">Total: R$ 5.000,00</div></div><span class="status-badge status-andamento">Em Andamento</span></div></div>
             </div>
+        </div>
+    </div>
 
-            <!-- Nota de Transparência -->
-            <div style="margin-top: 2rem; padding: 1.5rem; background: var(--light-green); border-radius: var(--border-radius); text-align: center;">
-                <i class="fas fa-balance-scale" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
-                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Compromisso com a Transparência</h3>
-                <p style="color: var(--text-light); max-width: 800px; margin: 0 auto;">
-                    Todos os recursos são geridos com responsabilidade e transparência. 
-                    Prestamos contas regularmente aos nossos doadores e à sociedade. 
-                    O projeto "Curso de Manicure" é realizado através de Termo de Parceria com o SESC.
-                </p>
+    <!-- MODAL MATÉRIA (CONTEÚDO DOS CURSOS) -->
+    <div id="materiaModal" class="materia-modal">
+        <div class="materia-content">
+            <div class="materia-header">
+                <h2 id="materiaTitulo"><i class="fas fa-graduation-cap"></i> Título</h2>
+                <span class="materia-close">&times;</span>
             </div>
+            <img id="materiaImagem" class="materia-imagem" src="" alt="Imagem do curso">
+            <div class="materia-data" id="materiaData"><i class="fas fa-calendar-alt"></i> Setembro de 2024</div>
+            <div class="materia-texto" id="materiaTexto"></div>
         </div>
     </div>
 
@@ -1504,9 +1080,7 @@
                 <h2 id="galeriaTitulo">Projeto</h2>
                 <span class="galeria-close">&times;</span>
             </div>
-            <div class="galeria-grid" id="galeriaGrid">
-                <!-- Fotos serão inseridas via JavaScript -->
-            </div>
+            <div class="galeria-grid" id="galeriaGrid"></div>
         </div>
     </div>
 
@@ -1514,40 +1088,25 @@
     <section id="home" class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1>
-                    Transformando vidas através
-                    <span>da inclusão e desenvolvimento</span>
-                </h1>
+                <h1>Transformando vidas através<span>da inclusão e desenvolvimento</span></h1>
                 <p>Construindo pontes para um futuro mais justo e igualitário através de projetos sociais, educacionais e culturais.</p>
                 <a href="#projetos" class="btn">Conheça nossos projetos</a>
             </div>
-            <div class="hero-image">
-                <img src="https://raw.githubusercontent.com/institucionalosc/institucionalofical/refs/heads/main/Estruturas%20para%20site%20(1).png" alt="Inclusão social">
-            </div>
+            <div class="hero-image"><img src="https://raw.githubusercontent.com/institucionalosc/institucionalofical/refs/heads/main/Estruturas%20para%20site%20(1).png" alt="CIDH"></div>
         </div>
     </section>
 
-    <!-- NOSSA HISTÓRIA -->
+    <!-- HISTÓRIA -->
     <section id="historia" class="historia-section">
         <div class="historia-container">
             <h2 class="section-title">Nossa História</h2>
             <div class="historia-grid">
                 <div class="historia-texto">
-                    <p>Centro Integrado de Desenvolvimento Humano(CIDH) transforma potencial em oportunidade.</p>
-                    
+                    <p>Centro Integrado de Desenvolvimento Humano (CIDH) transforma potencial em oportunidade.</p>
                     <p>Somos uma organização social que desenvolve qualificação profissional, formação cidadã e projetos educacionais, esportivos e culturais, preparando jovens e adultos para o mercado de trabalho e para o empreendedorismo.</p>
-                    
-                    <p>A instituição acredita que o acesso ao conhecimento, ao esporte, à cultura e às oportunidades de desenvolvimento é fundamental para reduzir desigualdades e construir trajetórias de vida mais dignas. Por isso, seus projetos são estruturados de forma participativa, buscando fortalecer vínculos comunitários, estimular o protagonismo social e ampliar as perspectivas de futuro dos participantes.</p>
-                    
-                    <p>Capacitar pessoas é desenvolver comunidades.</p>
-
-                    <p>Por isso, conectamos educação, inclusão social e geração de renda, criando caminhos reais para que pessoas em situação de vulnerabilidade construam novas trajetórias de vida.</p>
-
-                    <p>Juntos, transformamos conhecimento em oportunidade e impacto social em resultados reais.</p>
+                    <p>Capacitar pessoas é desenvolver comunidades. Por isso, conectamos educação, inclusão social e geração de renda, criando caminhos reais para que pessoas em situação de vulnerabilidade construam novas trajetórias de vida.</p>
                 </div>
-                <div class="historia-imagem">
-                    <img src="HCID_123.jpg" alt="Nossa história" onerror="this.src='https://via.placeholder.com/600x400?text=Nossa+História'">
-                </div>
+                <div class="historia-imagem"><img src="https://raw.githubusercontent.com/institucionalosc/institucionalofical/main/HCID_123.jpg" onerror="this.src='https://via.placeholder.com/600x400'"></div>
             </div>
         </div>
     </section>
@@ -1558,7 +1117,7 @@
             <div class="missao-card">
                 <i class="fas fa-heart"></i>
                 <h3>Nossa Missão</h3>
-                <p>Promover a inclusão social e o desenvolvimento humano através de projetos transformadores que geram oportunidades e fortalecem comunidades, construindo um futuro mais digno e igualitário para todos.</p>
+                <p>Promover a inclusão social e o desenvolvimento humano através de projetos transformadores que geram oportunidades e fortalecem comunidades.</p>
             </div>
         </div>
     </section>
@@ -1568,69 +1127,17 @@
         <div class="projetos-container">
             <h2 class="section-title">Nossos Projetos</h2>
             <div class="projetos-grid">
-                <!-- Projeto 1 - Curso de Manicure -->
                 <div class="projeto-card" onclick="abrirGaleria('manicure')">
-                    <div class="projeto-imagem">
-                        <img src="mani_01.jpeg" alt="Curso de Manicure" onerror="this.src='https://via.placeholder.com/400x250?text=Curso+de+Manicure'">
-                        <span class="foto-count"><i class="fas fa-images"></i> 4 fotos</span>
-                    </div>
-                    <div class="projeto-info">
-                        <h3>Curso de Manicure</h3>
-                        <p>Capacitação profissional gratuita para mulheres em situação de vulnerabilidade, oferecendo formação em manicure e pedicure.</p>
-                        <span class="projeto-tag">Geração de Renda</span>
-                    </div>
+                    <div class="projeto-imagem"><img src="https://raw.githubusercontent.com/institucionalosc/institucionalofical/main/mani_01.jpeg" onerror="this.src='https://via.placeholder.com/400x250'"><span class="foto-count"><i class="fas fa-images"></i> 4 fotos</span></div>
+                    <div class="projeto-info"><h3>Curso de Manicure</h3><p>Capacitação profissional gratuita para mulheres em situação de vulnerabilidade.</p><span class="projeto-tag">Geração de Renda</span></div>
                 </div>
-
-                <!-- Projeto 2 - Inclusão Social -->
                 <div class="projeto-card" onclick="abrirGaleria('inclusao')">
-                    <div class="projeto-imagem">
-                        <img src="roda01.jpeg" alt="Inclusão Social" onerror="this.src='https://via.placeholder.com/400x250?text=Inclusão+Social'">
-                        <span class="foto-count"><i class="fas fa-images"></i> 5 fotos</span>
-                    </div>
-                    <div class="projeto-info">
-                        <h3>Inclusão Social</h3>
-                        <p>Programa de integração social que atende pessoas da comunidade, oferecendo atividades inclusivas, rodas de conversas e desenvolvimento pessoal.</p>
-                        <span class="projeto-tag">Acessibilidade</span>
-                    </div>
+                    <div class="projeto-imagem"><img src="https://raw.githubusercontent.com/institucionalosc/institucionalofical/main/roda01.jpeg" onerror="this.src='https://via.placeholder.com/400x250'"><span class="foto-count"><i class="fas fa-images"></i> 5 fotos</span></div>
+                    <div class="projeto-info"><h3>Inclusão Social</h3><p>Programa de integração social com rodas de conversa e desenvolvimento pessoal.</p><span class="projeto-tag">Acessibilidade</span></div>
                 </div>
-
-                <!-- Projeto 3 - Esporte e Cidadania -->
-                <div class="projeto-card" onclick="abrirGaleria('esporte')">
-                    <div class="projeto-imagem">
-                        <img src="jiu_010.jpeg" alt="Esporte e Cidadania" onerror="this.src='https://via.placeholder.com/400x250?text=Esporte+e+Cidadania'">
-                        <span class="foto-count"><i class="fas fa-images"></i> 4 fotos</span>
-                    </div>
-                    <div class="projeto-info">
-                        <h3>Esporte e Cidadania</h3>
-                        <p>Promovendo saúde, disciplina e trabalho em equipe por meio do esporte.</p>
-                        <span class="projeto-tag">Esporte</span>
-                    </div>
-                </div>
-
-                <!-- Projeto 4 - Cultura Viva -->
-                <div class="projeto-card" onclick="abrirGaleria('cultura')">
-                    <div class="projeto-imagem">
-                        <img src="cut_02.jpeg" alt="Cultura Viva" onerror="this.src='https://via.placeholder.com/400x250?text=Cultura+Viva'">
-                        <span class="foto-count"><i class="fas fa-images"></i> 5 fotos</span>
-                    </div>
-                    <div class="projeto-info">
-                        <h3>Cultura Viva</h3>
-                        <p>Oficinas de música, dança, teatro e artesanato para todas as idades, valorizando a cultura local.</p>
-                        <span class="projeto-tag">Cultura</span>
-                    </div>
-                </div>
-
-                <!-- Projeto 5 - Qualificação Profissional -->
                 <div class="projeto-card" onclick="abrirGaleria('qualificacao')">
-                    <div class="projeto-imagem">
-                        <img src="conv_01.jpeg" alt="Qualificação Profissional" onerror="this.src='https://via.placeholder.com/400x250?text=Qualificação+Profissional'">
-                        <span class="foto-count"><i class="fas fa-images"></i> 4 fotos</span>
-                    </div>
-                    <div class="projeto-info">
-                        <h3>Qualificação Profissional</h3>
-                        <p>Cursos que preparam jovens e adultos para o mercado de trabalho.</p>
-                        <span class="projeto-tag">Trabalho</span>
-                    </div>
+                    <div class="projeto-imagem"><img src="https://raw.githubusercontent.com/institucionalosc/institucionalofical/main/conv_01.jpeg" onerror="this.src='https://via.placeholder.com/400x250'"><span class="foto-count"><i class="fas fa-images"></i> 4 fotos</span></div>
+                    <div class="projeto-info"><h3>Qualificação Profissional</h3><p>Cursos que preparam jovens e adultos para o mercado de trabalho.</p><span class="projeto-tag">Trabalho</span></div>
                 </div>
             </div>
         </div>
@@ -1641,9 +1148,7 @@
         <div class="diretoria-container">
             <h2 class="section-title">Nossa Diretoria</h2>
             <div class="diretoria-content">
-                <div class="diretoria-imagem">
-                    <img src="DRICIDH_1234.jpg" alt="Diretoria CIDH" onerror="this.src='https://via.placeholder.com/600x400?text=Diretoria+CIDH'">
-                </div>
+                <div class="diretoria-imagem"><img src="https://raw.githubusercontent.com/institucionalosc/institucionalofical/main/DRICIDH_1234.jpg" onerror="this.src='https://via.placeholder.com/600x400'"></div>
                 <div class="diretoria-texto">
                     <h3>Liderança comprometida com a transformação social</h3>
                     <ul class="diretoria-lista">
@@ -1661,103 +1166,43 @@
     <!-- FOOTER -->
     <footer id="contato" class="footer">
         <div class="footer-container">
-            <div class="footer-section">
-                <h4>CIDH</h4>
-                <p>Centro Integrado de Desenvolvimento Humano</p>
-                <p>Transformando vidas através da inclusão social e desenvolvimento humano sustentável.</p>
-            </div>
-            <div class="footer-section">
-                <h4>Links Rápidos</h4>
-                <p><a href="#home">Início</a></p>
-                <p><a href="#historia">Nossa História</a></p>
-                <p><a href="#projetos">Projetos</a></p>
-                <p><a href="#diretoria">Diretoria</a></p>
-                <p><a href="#" id="btnTransparenciaFooter">Portal da Transparência</a></p>
-            </div>
-            <div class="footer-section">
-                <h4>Contato</h4>
-                <p><i class="fas fa-map-marker-alt"></i> Rua Campo Verde, 101- Jardim Icarí, Caucaia - Ceará</p>
-                <p><i class="fas fa-phone"></i> (85) 99984-5334</p>
-                <p><i class="fas fa-envelope"></i> Cidhcidadania@gmail.com</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/cidhcaucaia?igsh=MWg2dW9jNjNvbTd6Zw==" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
+            <div class="footer-section"><h4>CIDH</h4><p>Centro Integrado de Desenvolvimento Humano</p></div>
+            <div class="footer-section"><h4>Links Rápidos</h4><p><a href="#home">Início</a></p><p><a href="#historia">Nossa História</a></p><p><a href="#projetos">Projetos</a></p><p><a href="#" id="btnTransparenciaFooter">Portal da Transparência</a></p></div>
+            <div class="footer-section"><h4>Contato</h4><p><i class="fas fa-map-marker-alt"></i> Rua Campo Verde, 101 - Jardim Icarí, Caucaia - Ceará</p><p><i class="fas fa-phone"></i> (85) 99984-5334</p><p><i class="fas fa-envelope"></i> Cidhcidadania@gmail.com</p><div class="social-links"><a href="https://www.instagram.com/cidhcaucaia" target="_blank"><i class="fab fa-instagram"></i></a></div></div>
         </div>
-        <div class="copyright">
-            <p>&copy; 2024 CIDH - Centro Integrado de Desenvolvimento Humano | Todos os direitos reservados.</p>
-        </div>
+        <div class="copyright"><p>&copy; 2024 CIDH - Todos os direitos reservados.</p></div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-        // Menu mobile
+        // MENU MOBILE
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
+        hamburger.addEventListener('click', () => navMenu.classList.toggle('active'));
+        document.querySelectorAll('.nav-menu a').forEach(link => link.addEventListener('click', () => navMenu.classList.remove('active')));
 
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-
-        // Fechar menu ao clicar em um link
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-            });
-        });
-
-        // Smooth scroll
+        // SMOOTH SCROLL
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
             });
         });
+
+        // BASE URL DAS IMAGENS NO GITHUB
+        const IMG_BASE_URL = 'https://raw.githubusercontent.com/institucionalosc/institucionalofical/main/';
 
         // MODAL DOAÇÃO
         const modalDoacao = document.getElementById('modalDoacao');
         const btnDoador = document.getElementById('btnDoador');
         const modalClose = document.querySelector('.modal-close');
+        btnDoador?.addEventListener('click', (e) => { e.preventDefault(); modalDoacao.style.display = 'flex'; });
+        modalClose?.addEventListener('click', () => modalDoacao.style.display = 'none');
+        window.addEventListener('click', (e) => { if (e.target === modalDoacao) modalDoacao.style.display = 'none'; });
 
-        if (btnDoador) {
-            btnDoador.addEventListener('click', (e) => {
-                e.preventDefault();
-                modalDoacao.style.display = 'flex';
-            });
-        }
-
-        if (modalClose) {
-            modalClose.addEventListener('click', () => {
-                modalDoacao.style.display = 'none';
-            });
-        }
-
-        window.addEventListener('click', (e) => {
-            if (e.target === modalDoacao) {
-                modalDoacao.style.display = 'none';
-            }
-        });
-
-        // Função para copiar PIX
         function copiarPix() {
-            const pix = '41.572.637/0001-30';
-            navigator.clipboard.writeText(pix).then(() => {
-                const btn = event.target;
-                const originalText = btn.textContent;
-                btn.textContent = '✓ Copiado!';
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                }, 2000);
-            });
+            navigator.clipboard.writeText('41.572.637/0001-30');
+            alert('Chave PIX copiada!');
         }
 
         // MODAL TRANSPARÊNCIA
@@ -1765,87 +1210,97 @@
         const btnTransparencia = document.getElementById('btnTransparencia');
         const btnTransparenciaFooter = document.getElementById('btnTransparenciaFooter');
         const transparenciaClose = document.querySelector('.transparencia-close');
+        function abrirTransparencia(e) { e?.preventDefault(); transparenciaModal.style.display = 'flex'; }
+        function fecharTransparencia() { transparenciaModal.style.display = 'none'; }
+        btnTransparencia?.addEventListener('click', abrirTransparencia);
+        btnTransparenciaFooter?.addEventListener('click', abrirTransparencia);
+        transparenciaClose?.addEventListener('click', fecharTransparencia);
+        window.addEventListener('click', (e) => { if (e.target === transparenciaModal) fecharTransparencia(); });
 
-        function abrirTransparencia(e) {
-            if (e) e.preventDefault();
-            transparenciaModal.style.display = 'flex';
+        // MODAL MATÉRIA (CONTEÚDO DOS CURSOS)
+        const materiaModal = document.getElementById('materiaModal');
+        const materiaTitulo = document.getElementById('materiaTitulo');
+        const materiaImagem = document.getElementById('materiaImagem');
+        const materiaData = document.getElementById('materiaData');
+        const materiaTexto = document.getElementById('materiaTexto');
+        const materiaClose = document.querySelector('.materia-close');
+
+        // Dados das matérias (cursos da qualificação profissional) - TEXTO CORRIGIDO
+        const materias = {
+            manicure_formacao: {
+                titulo: 'Formação em Manicure',
+                imagem: IMG_BASE_URL + 'mani_01.jpeg',
+                data: 'Setembro de 2024',
+                texto: '<p>Em setembro de 2024, o <strong>Centro Integrado de Desenvolvimento Humano (CIDH)</strong>, em parceria com a <strong>Associação Beneficente Maria Pinto</strong>, realizou uma formação em manicure voltada para mulheres em situação de vulnerabilidade social em Caucaia.</p><p>Ao todo, <strong>40 beneficiárias</strong> participaram da capacitação, com foco na <strong>geração de renda</strong> e fortalecimento da autonomia feminina. O curso abordou técnicas de manicure e pedicure, além de noções de empreendedorismo e atendimento ao cliente.</p><p>As participantes receberam certificado de conclusão e um kit profissional para iniciarem sua própria atividade geradora de renda. A iniciativa contou com o apoio do SESC e da comunidade local, que cedeu o espaço para as aulas práticas.</p><p><i class="fas fa-quote-left"></i> "Agora me sinto preparada para trabalhar e ajudar minha família. Esse curso mudou minha vida", relatou Maria da Silva, uma das beneficiárias.</p>'
+            },
+            consultoria_vendas: {
+                titulo: 'Oficina de Consultoria em Vendas',
+                imagem: IMG_BASE_URL + 'conv_01.jpeg',
+                data: 'Setembro a Novembro de 2024',
+                texto: '<p>Em setembro de 2024, o <strong>Centro Integrado de Desenvolvimento Humano (CIDH)</strong>, em parceria com o <strong>Instituto Reconstruindo Vidas</strong>, realizou a <strong>Oficina de Consultoria em Vendas</strong>, capacitando jovens e adultos para atuarem no mercado de vendas com técnicas profissionais de abordagem, negociação e fidelização de clientes.</p><p>A oficina aconteceu de <strong>setembro de 2024 a 29 de novembro de 2024</strong>, beneficiando <strong>38 participantes</strong> da comunidade. Durante o período, os alunos aprenderam sobre psicologia do consumo, comunicação eficaz, pós-venda e uso de ferramentas digitais para vendas.</p><p>Ao final, os participantes receberam certificação e foram encaminhados para vagas de emprego em empresas parceiras da região. A iniciativa fortaleceu a autonomia dos beneficiários e abriu novas perspectivas profissionais.</p>'
+            },
+            oficina_empreendedor: {
+                titulo: 'Oficina do Empreendedor',
+                imagem: IMG_BASE_URL + 'empreen_02.jpeg',
+                data: 'Maio a Agosto de 2024',
+                texto: '<p>Entre <strong>maio de 2024 e agosto de 2024</strong>, o <strong>Centro Integrado de Desenvolvimento Humano (CIDH)</strong> realizou a <strong>Oficina do Empreendedor</strong>, um curso intensivo voltado para <strong>adultos inscritos no CadÚnico</strong>, com foco em <strong>inclusão produtiva, empreendedorismo e geração de renda</strong>.</p><p>Participaram da oficina <strong>40 beneficiários</strong>, que aprenderam sobre: plano de negócios, marketing digital para pequenos negócios, finanças pessoais e empresariais, formalização como MEI e acesso a linhas de crédito.</p><p>Os alunos desenvolveram seus próprios planos de negócio ao longo do curso, e os três melhores projetos receberam mentoria especializada e um microcrédito inicial para colocar a ideia em prática.</p><p>Uma das participantes criou um negócio de doces artesanais e hoje já atende encomendas para festas e eventos na região, demonstrando o impacto positivo da iniciativa na geração de renda das famílias atendidas.</p>'
+            },
+            turma_informatica: {
+                titulo: 'Turma de Informática 60+',
+                imagem: IMG_BASE_URL + 'info_60.jpeg',
+                data: 'Agosto de 2024',
+                texto: '<p>Em agosto de 2024, o <strong>CIDH</strong> lançou a <strong>Turma de Informática 60+</strong>, um projeto pioneiro voltado para a inclusão digital de idosos da comunidade.</p><p><strong>35 idosos</strong> participaram do curso gratuito, que ensinou desde o uso básico do computador e internet até ferramentas como WhatsApp, redes sociais, aplicativos bancários e plataformas de governo (como Meu INSS e Conecte SUS).</p><p>O objetivo foi promover a autonomia digital da terceira idade, facilitando o acesso a serviços essenciais e a comunicação com familiares. As aulas aconteceram duas vezes por semana, com duração de 3 meses.</p><p><i class="fas fa-quote-left"></i> "Nunca imaginei que aprenderia a mexer no computador. Hoje converso com meus netos pelo WhatsApp e faço minhas consultas médicas online", comemora seu José, de 68 anos.</p>'
+            }
+        };
+
+        function abrirMateria(cursoId) {
+            const materia = materias[cursoId];
+            if (!materia) return;
+            
+            materiaTitulo.innerHTML = `<i class="fas fa-graduation-cap"></i> ${materia.titulo}`;
+            materiaImagem.src = materia.imagem;
+            materiaImagem.onerror = () => { materiaImagem.src = 'https://via.placeholder.com/800x300?text=Imagem+do+Curso'; };
+            materiaData.innerHTML = `<i class="fas fa-calendar-alt"></i> ${materia.data}`;
+            materiaTexto.innerHTML = materia.texto;
+            materiaModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
 
-        function fecharTransparencia() {
-            transparenciaModal.style.display = 'none';
+        materiaClose?.addEventListener('click', () => {
+            materiaModal.style.display = 'none';
             document.body.style.overflow = 'auto';
-        }
-
-        if (btnTransparencia) {
-            btnTransparencia.addEventListener('click', abrirTransparencia);
-        }
-
-        if (btnTransparenciaFooter) {
-            btnTransparenciaFooter.addEventListener('click', abrirTransparencia);
-        }
-
-        if (transparenciaClose) {
-            transparenciaClose.addEventListener('click', fecharTransparencia);
-        }
-
-        window.addEventListener('click', (e) => {
-            if (e.target === transparenciaModal) {
-                fecharTransparencia();
-            }
         });
+        window.addEventListener('click', (e) => { if (e.target === materiaModal) { materiaModal.style.display = 'none'; document.body.style.overflow = 'auto'; } });
 
         // MODAL GALERIA
         const galeriaModal = document.getElementById('galeriaModal');
         const galeriaClose = document.querySelector('.galeria-close');
         const galeriaGrid = document.getElementById('galeriaGrid');
-        const galeriaTitulo = document.getElementById('galeriaTitulo');
+        const galeriaTituloElem = document.getElementById('galeriaTitulo');
 
-        // Dados das galerias
         const galerias = {
             manicure: {
                 titulo: 'Curso de Manicure',
                 fotos: [
-                    { url: 'mani_01.jpeg', descricao: 'Quarta turma do curso de manicure' },
-                    { url: 'mani_03.jpeg', descricao: 'Demonstração de técnicas de esmaltação' },
-                    { url: 'mani_05.jpeg', descricao: 'Prática com todas as beneficiárias' },
-                    { url: 'https://via.placeholder.com/600x400?text=Manicure+1', descricao: 'Alunas em atividade prática' }
+                    { url: IMG_BASE_URL + 'mani_01.jpeg', descricao: 'Quarta turma do curso de manicure', materiaId: null },
+                    { url: IMG_BASE_URL + 'mani_03.jpeg', descricao: 'Demonstração de técnicas de esmaltação', materiaId: null },
+                    { url: IMG_BASE_URL + 'mani_05.jpeg', descricao: 'Prática com todas as beneficiárias', materiaId: null }
                 ]
             },
             inclusao: {
                 titulo: 'Inclusão Social',
                 fotos: [
-                    { url: 'roda01.jpeg', descricao: 'Roda de conversa sobre autoestima' },
-                    { url: 'roda_12.jpeg', descricao: 'Oficina de autoestima e musicalização' },
-                    { url: 'https://via.placeholder.com/600x400?text=Inclusão+1', descricao: 'Atividade em grupo' },
-                    { url: 'https://via.placeholder.com/600x400?text=Inclusão+2', descricao: 'Momento de integração' }
-                ]
-            },
-            esporte: {
-                titulo: 'Esporte e Cidadania',
-                fotos: [
-                    { url: 'história_01.png', descricao: 'Recebendo o kit esportivo' },
-                    { url: 'jiu_010.jpeg', descricao: 'Primeira aula de jiu-jitsu' },
-                    { url: 'https://via.placeholder.com/600x400?text=Esporte+1', descricao: 'Treino de futebol' },
-                    { url: 'https://via.placeholder.com/600x400?text=Esporte+2', descricao: 'Entrega de medalhas' }
-                ]
-            },
-            cultura: {
-                titulo: 'Cultura Viva',
-                fotos: [
-                    { url: 'cut_01.jpeg', descricao: 'Artesanato cultural - aula 01' },
-                    { url: 'cut_02.jpeg', descricao: 'Artesanato cultural' },
-                    { url: 'https://via.placeholder.com/600x400?text=Cultura+1', descricao: 'Oficina de dança' },
-                    { url: 'https://via.placeholder.com/600x400?text=Cultura+2', descricao: 'Apresentação cultural' }
+                    { url: IMG_BASE_URL + 'roda01.jpeg', descricao: 'Roda de conversa sobre autoestima', materiaId: null },
+                    { url: IMG_BASE_URL + 'roda_12.jpeg', descricao: 'Oficina de autoestima e musicalização', materiaId: null }
                 ]
             },
             qualificacao: {
                 titulo: 'Qualificação Profissional',
                 fotos: [
-                    { url: 'mani_01.jpeg', descricao: 'Qualificação e formação em Manicure: Em setembro de 2024, o Centro Integrado de Desenvolvimento Humano (CDIH), em parceria com a Associação Beneficente Maria Pinto, realizou uma formação em manicure voltada para mulheres em situação de vulnerabilidade social em Caucaia. Ao todo, 40 beneficiárias participaram da capacitação, com foco na geração de renda e fortalecimento da autonomia feminina.' },
-                    { url: 'conv_01.jpeg', descricao: 'Oficina de Consultoria em Vendas' },
-                    { url: 'empreen_02.jpeg', descricao: 'Oficina do Empreendedor' },
-                    { url: 'https://via.placeholder.com/600x400?text=Qualificação+1', descricao: 'Turma de informática' }
+                    { url: IMG_BASE_URL + 'mani_01.jpeg', descricao: 'Qualificação e formação em Manicure', materiaId: 'manicure_formacao' },
+                    { url: IMG_BASE_URL + 'conv_01.jpeg', descricao: 'Oficina de Consultoria em Vendas', materiaId: 'consultoria_vendas' },
+                    { url: IMG_BASE_URL + 'empreen_02.jpeg', descricao: 'Oficina do Empreendedor', materiaId: 'oficina_empreendedor' },
+                    { url: IMG_BASE_URL + 'info_60.jpeg', descricao: 'Turma de informática 60+', materiaId: 'turma_informatica' }
                 ]
             }
         };
@@ -1853,54 +1308,45 @@
         function abrirGaleria(projetoId) {
             const galeria = galerias[projetoId];
             if (!galeria) return;
-
-            galeriaTitulo.textContent = galeria.titulo;
+            
+            galeriaTituloElem.textContent = galeria.titulo;
             galeriaGrid.innerHTML = '';
-
+            
             galeria.fotos.forEach(foto => {
                 const item = document.createElement('div');
                 item.className = 'galeria-item';
-                item.innerHTML = `
-                    <img src="${foto.url}" alt="${foto.descricao}" onerror="this.src='https://via.placeholder.com/600x400?text=Imagem+Indisponível'">
-                    <div class="galeria-descricao">
-                        <p>${foto.descricao}</p>
-                    </div>
-                `;
+                item.innerHTML = `<img src="${foto.url}" onerror="this.src='https://via.placeholder.com/400x250'" alt="${foto.descricao}"><div class="galeria-descricao"><h4>${foto.descricao}</h4></div>`;
+                
+                if (foto.materiaId) {
+                    item.style.cursor = 'pointer';
+                    item.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        galeriaModal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                        abrirMateria(foto.materiaId);
+                    });
+                }
+                
                 galeriaGrid.appendChild(item);
             });
-
+            
             galeriaModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
 
-        if (galeriaClose) {
-            galeriaClose.addEventListener('click', () => {
-                galeriaModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            });
-        }
-
-        window.addEventListener('click', (e) => {
-            if (e.target === galeriaModal) {
-                galeriaModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
+        galeriaClose?.addEventListener('click', () => {
+            galeriaModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
         });
+        window.addEventListener('click', (e) => { if (e.target === galeriaModal) { galeriaModal.style.display = 'none'; document.body.style.overflow = 'auto'; } });
 
-        // Fechar modais com tecla ESC
+        // Fechar modais com ESC
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                if (modalDoacao.style.display === 'flex') {
-                    modalDoacao.style.display = 'none';
-                }
-                if (transparenciaModal.style.display === 'flex') {
-                    transparenciaModal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-                if (galeriaModal.style.display === 'flex') {
-                    galeriaModal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
+                if (modalDoacao.style.display === 'flex') modalDoacao.style.display = 'none';
+                if (transparenciaModal.style.display === 'flex') { transparenciaModal.style.display = 'none'; document.body.style.overflow = 'auto'; }
+                if (galeriaModal.style.display === 'flex') { galeriaModal.style.display = 'none'; document.body.style.overflow = 'auto'; }
+                if (materiaModal.style.display === 'flex') { materiaModal.style.display = 'none'; document.body.style.overflow = 'auto'; }
             }
         });
     </script>
