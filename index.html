@@ -157,6 +157,28 @@
             display: none !important;
         }
 
+        .btn-emenda {
+            background: linear-gradient(135deg, #ff9800, #ff5722);
+            color: var(--white) !important;
+            padding: 0.6rem 1.5rem !important;
+            border-radius: 50px;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+            transition: all 0.3s !important;
+            margin-left: 0.5rem;
+        }
+
+        .btn-emenda:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 87, 34, 0.4);
+        }
+
+        .btn-emenda::after {
+            display: none !important;
+        }
+
         .nav-buttons {
             display: flex;
             gap: 1rem;
@@ -460,6 +482,70 @@
             margin: 0.5rem 0;
         }
 
+        .recursos-anuais {
+            background: var(--light-green);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+        }
+
+        .recursos-anuais h3 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .recursos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .recurso-ano {
+            background: var(--white);
+            padding: 0.8rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .recurso-ano .ano {
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+
+        .recurso-ano .valor {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .mensagem-emendas {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .btn-emenda-modal {
+            background: linear-gradient(135deg, #ff9800, #ff5722);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+
+        .btn-emenda-modal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 87, 34, 0.4);
+        }
+
         .transparencia-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -539,6 +625,80 @@
         .status-andamento {
             background: #ff9800;
             color: white;
+        }
+
+        /* MODAL EMENDA */
+        .emenda-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .emenda-content {
+            max-width: 700px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            position: relative;
+        }
+
+        .emenda-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #ff9800;
+        }
+
+        .emenda-header h2 {
+            color: #ff9800;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .emenda-close {
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: color 0.3s;
+        }
+
+        .emenda-close:hover {
+            color: #ff9800;
+        }
+
+        .emenda-info {
+            background: var(--light-green);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+        }
+
+        .emenda-info p {
+            margin: 0.5rem 0;
+        }
+
+        .emenda-destaque {
+            background: linear-gradient(135deg, #ff9800, #ff5722);
+            color: var(--white);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin: 1rem 0;
         }
 
         /* GALERIA MODAL */
@@ -654,13 +814,19 @@
         .hero-content h1 {
             font-size: clamp(2.2rem, 5vw, 4rem);
             line-height: 1.2;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             font-weight: 800;
         }
 
         .hero-content h1 span {
             color: var(--primary-color);
             display: block;
+        }
+
+        .hero-content h2 {
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
         }
 
         .hero-content p {
@@ -1019,6 +1185,7 @@
                 <li class="nav-buttons">
                     <a href="#" class="btn-transparencia" id="btnTransparencia"><i class="fas fa-chart-line"></i> Portal Transparência</a>
                     <a href="#" class="btn-doador" id="btnDoador"><i class="fas fa-heart"></i> Seja um Doador</a>
+                    <a href="#" class="btn-emenda" id="btnEmenda"><i class="fas fa-file-alt"></i> Emenda 2026</a>
                 </li>
             </ul>
         </div>
@@ -1049,13 +1216,68 @@
                 <span class="transparencia-close">&times;</span>
             </div>
             <div class="transparencia-resumo">
-                <div class="resumo-item"><i class="fas fa-hand-holding-heart"></i><div class="valor">R$ 6.780,00</div><div class="label">Total Arrecadado (2024)</div></div>
+                <div class="resumo-item"><i class="fas fa-hand-holding-heart"></i><div class="valor">R$ 60.000,00</div><div class="label">Total Arrecadado (2025)</div></div>
                 <div class="resumo-item"><i class="fas fa-users"></i><div class="valor">385</div><div class="label">Pessoas Atendidas</div></div>
                 <div class="resumo-item"><i class="fas fa-project-diagram"></i><div class="valor">7</div><div class="label">Projetos Ativos</div></div>
             </div>
+            
+            <div class="recursos-anuais">
+                <h3><i class="fas fa-chart-line"></i> Recursos Anuais (Doações)</h3>
+                <div class="recursos-grid">
+                    <div class="recurso-ano"><div class="ano">2021</div><div class="valor">R$ 35.000,00</div></div>
+                    <div class="recurso-ano"><div class="ano">2022</div><div class="valor">R$ 45.000,00</div></div>
+                    <div class="recurso-ano"><div class="ano">2023</div><div class="valor">R$ 42.000,00</div></div>
+                    <div class="recurso-ano"><div class="ano">2024</div><div class="valor">R$ 51.000,00</div></div>
+                    <div class="recurso-ano"><div class="ano">2025</div><div class="valor">R$ 60.000,00</div></div>
+                </div>
+            </div>
+
+            <div class="mensagem-emendas">
+                <i class="fas fa-info-circle"></i> O CIDH não recebeu emendas parlamentares entre os anos de 2020 a 2025, razão pela qual não há informação a respeito.
+            </div>
+            
+            <button class="btn-emenda-modal" id="btnEmendaModal"><i class="fas fa-file-alt"></i> Ver Emenda 2026</button>
+
             <div class="transparencia-grid">
-                <div class="transparencia-card"><img src="https://raw.githubusercontent.com/institucionalosc/institucionalofical/main/mani_01.jpeg" onerror="this.src='https://via.placeholder.com/400x200'"><div class="transparencia-info"><h3>Curso de Manicure</h3><div class="termo-parceria"><i class="fas fa-handshake"></i><p>Termo de Parceria - SESC</p></div><span class="status-badge status-andamento">Em Andamento</span></div></div>
+                <div class="transparencia-card"><img src="https://raw.githubusercontent.com/institucionalosc/institucionalofical/main/mani_01.jpeg" onerror="this.src='https://via.placeholder.com/400x200'"><div class="transparencia-info"><h3>Quarta Turma do Curso de Empreendedora Manicure</h3><div class="termo-parceria"><i class="fas fa-handshake"></i><p>Termo de Parceria - SESC</p></div><span class="status-badge status-andamento">Em Andamento</span></div></div>
                 <div class="transparencia-card"><img src="https://raw.githubusercontent.com/institucionalosc/institucionalofical/main/roda01.jpeg" onerror="this.src='https://via.placeholder.com/400x200'"><div class="transparencia-info"><h3>Inclusão Social</h3><div class="detalhe-valores"><div class="linha"><span>Investimento:</span><strong>R$ 5.000,00</strong></div><div class="total">Total: R$ 5.000,00</div></div><span class="status-badge status-andamento">Em Andamento</span></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL EMENDA 2026 -->
+    <div id="emendaModal" class="emenda-modal">
+        <div class="emenda-content">
+            <div class="emenda-header">
+                <h2><i class="fas fa-file-alt"></i> Emenda Parlamentar 2026</h2>
+                <span class="emenda-close">&times;</span>
+            </div>
+            <div class="emenda-destaque">
+                <i class="fas fa-check-circle"></i> Proposta Aprovada - Emenda 41380020
+            </div>
+            <div class="emenda-info">
+                <p><strong>Código do Programa:</strong> 6900020260040</p>
+                <p><strong>Nome do Programa:</strong> Promoção do Desenvolvimento de Micro e Pequenas Empresas, Microempreendedor Individual, Potencial Empreendedor e Artesanato.</p>
+            </div>
+            <div class="emenda-info">
+                <p><strong>Modalidade:</strong> Termo de Fomento</p>
+                <p><strong>Situação:</strong> Proposta/Plano de Trabalho em Complementação</p>
+                <p><strong>Número da Proposta:</strong> 010156/2026</p>
+            </div>
+            <div class="emenda-info">
+                <p><strong>Proponente:</strong> CNPJ 41.572.637/0001-30 - CENTRO INTEGRADO DE DESENVOLVIMENTO HUMANO - CIDH</p>
+                <p><strong>Órgão:</strong> 69000 - Ministério do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte</p>
+            </div>
+            <div class="emenda-info">
+                <p><strong>Itens de Investimento:</strong> Execução de Custeio</p>
+                <p><strong>Áreas de Atuação:</strong> 06.3 - Empregabilidade / 06.4 - Fomento ao Trabalho / 07.3 - Ensino Profissional / 18.1 - Promoção Comercial / 18.2 - Comercialização</p>
+            </div>
+            <div class="emenda-destaque">
+                <p><strong>Valor Global:</strong> R$ 200.000,00</p>
+                <p><strong>Valor de Repasse:</strong> R$ 200.000,00</p>
+                <p><strong>Contrapartida:</strong> R$ 0,00</p>
+                <p><strong>Emenda 41380020:</strong> R$ 200.000,00</p>
+                <p><strong>Autor:</strong> Eduardo Girão</p>
             </div>
         </div>
     </div>
@@ -1088,7 +1310,8 @@
     <section id="home" class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1>Transformando vidas através<span>da inclusão e desenvolvimento</span></h1>
+                <h1>Qualificação Profissional <span>& Empreendedorismo</span></h1>
+                <h2>mercado de trabalho e geração de renda pelo empreendedorismo</h2>
                 <p>Construindo pontes para um futuro mais justo e igualitário através de projetos sociais, educacionais e culturais.</p>
                 <a href="#projetos" class="btn">Conheça nossos projetos</a>
             </div>
@@ -1129,14 +1352,14 @@
             <div class="projetos-grid">
                 <div class="projeto-card" onclick="abrirGaleria('manicure')">
                     <div class="projeto-imagem"><img src="https://raw.githubusercontent.com/institucionalosc/institucionalofical/main/mani_01.jpeg" onerror="this.src='https://via.placeholder.com/400x250'"><span class="foto-count"><i class="fas fa-images"></i> 4 fotos</span></div>
-                    <div class="projeto-info"><h3>Curso de Manicure</h3><p>Capacitação profissional gratuita para mulheres em situação de vulnerabilidade.</p><span class="projeto-tag">Geração de Renda</span></div>
+                    <div class="projeto-info"><h3>Quarta Turma do Curso de Empreendedora Manicure</h3><p>Capacitação profissional gratuita para mulheres em situação de vulnerabilidade.</p><span class="projeto-tag">Geração de Renda</span></div>
                 </div>
                 <div class="projeto-card" onclick="abrirGaleria('inclusao')">
-                    <div class="projeto-imagem"><img src="https://raw.githubusercontent.com/institucionalosc/institucionalofical/main/roda01.jpeg" onerror="this.src='https://via.placeholder.com/400x250'"><span class="foto-count"><i class="fas fa-images"></i> 5 fotos</span></div>
+                    <div class="projeto-imagem"><img src="https://raw.githubusercontent.com/institucionalosc/institucionalofical/main/roda01.jpeg" onerror="this.src='https://via.placeholder.com/400x250'"><span class="foto-count"><i class="fas fa-images"></i> 2 fotos</span></div>
                     <div class="projeto-info"><h3>Inclusão Social</h3><p>Programa de integração social com rodas de conversa e desenvolvimento pessoal.</p><span class="projeto-tag">Acessibilidade</span></div>
                 </div>
                 <div class="projeto-card" onclick="abrirGaleria('qualificacao')">
-                    <div class="projeto-imagem"><img src="https://raw.githubusercontent.com/institucionalosc/institucionalofical/main/conv_01.jpeg" onerror="this.src='https://via.placeholder.com/400x250'"><span class="foto-count"><i class="fas fa-images"></i> 4 fotos</span></div>
+                    <div class="projeto-imagem"><img src="https://raw.githubusercontent.com/institucionalosc/institucionalofical/main/conv_01.jpeg" onerror="this.src='https://via.placeholder.com/400x250'"><span class="foto-count"><i class="fas fa-images"></i> 3 fotos</span></div>
                     <div class="projeto-info"><h3>Qualificação Profissional</h3><p>Cursos que preparam jovens e adultos para o mercado de trabalho.</p><span class="projeto-tag">Trabalho</span></div>
                 </div>
             </div>
@@ -1167,7 +1390,7 @@
     <footer id="contato" class="footer">
         <div class="footer-container">
             <div class="footer-section"><h4>CIDH</h4><p>Centro Integrado de Desenvolvimento Humano</p></div>
-            <div class="footer-section"><h4>Links Rápidos</h4><p><a href="#home">Início</a></p><p><a href="#historia">Nossa História</a></p><p><a href="#projetos">Projetos</a></p><p><a href="#" id="btnTransparenciaFooter">Portal da Transparência</a></p></div>
+            <div class="footer-section"><h4>Links Rápidos</h4><p><a href="#home">Início</a></p><p><a href="#historia">Nossa História</a></p><p><a href="#projetos">Projetos</a></p><p><a href="#" id="btnTransparenciaFooter">Portal da Transparência</a></p><p><a href="#" id="btnEmendaFooter">Emenda 2026</a></p></div>
             <div class="footer-section"><h4>Contato</h4><p><i class="fas fa-map-marker-alt"></i> Rua Campo Verde, 101 - Jardim Icarí, Caucaia - Ceará</p><p><i class="fas fa-phone"></i> (85) 99984-5334</p><p><i class="fas fa-envelope"></i> Cidhcidadania@gmail.com</p><div class="social-links"><a href="https://www.instagram.com/cidhcaucaia" target="_blank"><i class="fab fa-instagram"></i></a></div></div>
         </div>
         <div class="copyright"><p>&copy; 2024 CIDH - Todos os direitos reservados.</p></div>
@@ -1217,6 +1440,22 @@
         transparenciaClose?.addEventListener('click', fecharTransparencia);
         window.addEventListener('click', (e) => { if (e.target === transparenciaModal) fecharTransparencia(); });
 
+        // MODAL EMENDA 2026
+        const emendaModal = document.getElementById('emendaModal');
+        const btnEmenda = document.getElementById('btnEmenda');
+        const btnEmendaFooter = document.getElementById('btnEmendaFooter');
+        const btnEmendaModal = document.getElementById('btnEmendaModal');
+        const emendaClose = document.querySelector('.emenda-close');
+        
+        function abrirEmenda(e) { e?.preventDefault(); emendaModal.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+        function fecharEmenda() { emendaModal.style.display = 'none'; document.body.style.overflow = 'auto'; }
+        
+        btnEmenda?.addEventListener('click', abrirEmenda);
+        btnEmendaFooter?.addEventListener('click', abrirEmenda);
+        if (btnEmendaModal) btnEmendaModal.addEventListener('click', abrirEmenda);
+        emendaClose?.addEventListener('click', fecharEmenda);
+        window.addEventListener('click', (e) => { if (e.target === emendaModal) fecharEmenda(); });
+
         // MODAL MATÉRIA (CONTEÚDO DOS CURSOS)
         const materiaModal = document.getElementById('materiaModal');
         const materiaTitulo = document.getElementById('materiaTitulo');
@@ -1225,13 +1464,13 @@
         const materiaTexto = document.getElementById('materiaTexto');
         const materiaClose = document.querySelector('.materia-close');
 
-        // Dados das matérias (cursos da qualificação profissional) - TEXTO CORRIGIDO
+        // Dados das matérias (cursos da qualificação profissional)
         const materias = {
             manicure_formacao: {
-                titulo: 'Formação em Manicure',
+                titulo: 'Quarta Turma do Curso de Empreendedora Manicure',
                 imagem: IMG_BASE_URL + 'mani_01.jpeg',
                 data: 'Setembro de 2024',
-                texto: '<p>Em setembro de 2024, o <strong>Centro Integrado de Desenvolvimento Humano (CIDH)</strong>, em parceria com a <strong>Associação Beneficente Maria Pinto</strong>, realizou uma formação em manicure voltada para mulheres em situação de vulnerabilidade social em Caucaia.</p><p>Ao todo, <strong>40 beneficiárias</strong> participaram da capacitação, com foco na <strong>geração de renda</strong> e fortalecimento da autonomia feminina. O curso abordou técnicas de manicure e pedicure, além de noções de empreendedorismo e atendimento ao cliente.</p><p>As participantes receberam certificado de conclusão e um kit profissional para iniciarem sua própria atividade geradora de renda. A iniciativa contou com o apoio do SESC e da comunidade local, que cedeu o espaço para as aulas práticas.</p><p><i class="fas fa-quote-left"></i> "Agora me sinto preparada para trabalhar e ajudar minha família. Esse curso mudou minha vida", relatou Maria da Silva, uma das beneficiárias.</p>'
+                texto: '<p>Em setembro de 2024, o <strong>Centro Integrado de Desenvolvimento Humano (CIDH)</strong>, em parceria com a <strong>Associação Beneficente Maria Pinto</strong>, realizou a <strong>Quarta Turma do Curso de Empreendedora Manicure</strong>, voltada para mulheres em situação de vulnerabilidade social em Caucaia.</p><p>Ao todo, <strong>40 beneficiárias</strong> participaram da capacitação, com foco na <strong>geração de renda</strong> e fortalecimento da autonomia feminina. O curso abordou técnicas de manicure e pedicure, além de noções de empreendedorismo, gestão de negócios e atendimento ao cliente.</p><p>As participantes receberam certificado de conclusão e um kit profissional para iniciarem sua própria atividade geradora de renda. A iniciativa contou com o apoio do SESC e da comunidade local, que cedeu o espaço para as aulas práticas.</p><p><i class="fas fa-quote-left"></i> "Agora me sinto preparada para empreender e ajudar minha família. Esse curso mudou minha vida", relatou Maria da Silva, uma das beneficiárias.</p>'
             },
             consultoria_vendas: {
                 titulo: 'Oficina de Consultoria em Vendas',
@@ -1244,12 +1483,6 @@
                 imagem: IMG_BASE_URL + 'empreen_02.jpeg',
                 data: 'Maio a Agosto de 2024',
                 texto: '<p>Entre <strong>maio de 2024 e agosto de 2024</strong>, o <strong>Centro Integrado de Desenvolvimento Humano (CIDH)</strong> realizou a <strong>Oficina do Empreendedor</strong>, um curso intensivo voltado para <strong>adultos inscritos no CadÚnico</strong>, com foco em <strong>inclusão produtiva, empreendedorismo e geração de renda</strong>.</p><p>Participaram da oficina <strong>40 beneficiários</strong>, que aprenderam sobre: plano de negócios, marketing digital para pequenos negócios, finanças pessoais e empresariais, formalização como MEI e acesso a linhas de crédito.</p><p>Os alunos desenvolveram seus próprios planos de negócio ao longo do curso, e os três melhores projetos receberam mentoria especializada e um microcrédito inicial para colocar a ideia em prática.</p><p>Uma das participantes criou um negócio de doces artesanais e hoje já atende encomendas para festas e eventos na região, demonstrando o impacto positivo da iniciativa na geração de renda das famílias atendidas.</p>'
-            },
-            turma_informatica: {
-                titulo: 'Turma de Informática 60+',
-                imagem: IMG_BASE_URL + 'info_60.jpeg',
-                data: 'Agosto de 2024',
-                texto: '<p>Em agosto de 2024, o <strong>CIDH</strong> lançou a <strong>Turma de Informática 60+</strong>, um projeto pioneiro voltado para a inclusão digital de idosos da comunidade.</p><p><strong>35 idosos</strong> participaram do curso gratuito, que ensinou desde o uso básico do computador e internet até ferramentas como WhatsApp, redes sociais, aplicativos bancários e plataformas de governo (como Meu INSS e Conecte SUS).</p><p>O objetivo foi promover a autonomia digital da terceira idade, facilitando o acesso a serviços essenciais e a comunicação com familiares. As aulas aconteceram duas vezes por semana, com duração de 3 meses.</p><p><i class="fas fa-quote-left"></i> "Nunca imaginei que aprenderia a mexer no computador. Hoje converso com meus netos pelo WhatsApp e faço minhas consultas médicas online", comemora seu José, de 68 anos.</p>'
             }
         };
 
@@ -1280,27 +1513,26 @@
 
         const galerias = {
             manicure: {
-                titulo: 'Curso de Manicure',
+                titulo: 'Quarta Turma do Curso de Empreendedora Manicure',
                 fotos: [
-                    { url: IMG_BASE_URL + 'mani_01.jpeg', descricao: 'Quarta turma do curso de manicure', materiaId: null },
-                    { url: IMG_BASE_URL + 'mani_03.jpeg', descricao: 'Demonstração de técnicas de esmaltação', materiaId: null },
-                    { url: IMG_BASE_URL + 'mani_05.jpeg', descricao: 'Prática com todas as beneficiárias', materiaId: null }
+                    { url: IMG_BASE_URL + 'mani_01.jpeg', descricao: 'Quarta turma do curso de empreendedora manicure', materiaId: 'manicure_formacao' },
+                    { url: IMG_BASE_URL + 'mani_03.jpeg', descricao: 'Demonstração de técnicas de esmaltação', materiaId: 'manicure_formacao' },
+                    { url: IMG_BASE_URL + 'mani_05.jpeg', descricao: 'Prática com todas as beneficiárias', materiaId: 'manicure_formacao' }
                 ]
             },
             inclusao: {
                 titulo: 'Inclusão Social',
                 fotos: [
-                    { url: IMG_BASE_URL + 'roda01.jpeg', descricao: 'Roda de conversa sobre autoestima', materiaId: null },
-                    { url: IMG_BASE_URL + 'roda_12.jpeg', descricao: 'Oficina de autoestima e musicalização', materiaId: null }
+                    { url: IMG_BASE_URL + 'roda01.jpeg', descricao: 'Roda de conversa sobre autoestima', materiaId: 'oficina_empreendedor' },
+                    { url: IMG_BASE_URL + 'roda_12.jpeg', descricao: 'Atividade em grupo de desenvolvimento pessoal', materiaId: 'oficina_empreendedor' }
                 ]
             },
             qualificacao: {
                 titulo: 'Qualificação Profissional',
                 fotos: [
-                    { url: IMG_BASE_URL + 'mani_01.jpeg', descricao: 'Qualificação e formação em Manicure', materiaId: 'manicure_formacao' },
+                    { url: IMG_BASE_URL + 'mani_01.jpeg', descricao: 'Qualificação e formação em Empreendedora Manicure', materiaId: 'manicure_formacao' },
                     { url: IMG_BASE_URL + 'conv_01.jpeg', descricao: 'Oficina de Consultoria em Vendas', materiaId: 'consultoria_vendas' },
-                    { url: IMG_BASE_URL + 'empreen_02.jpeg', descricao: 'Oficina do Empreendedor', materiaId: 'oficina_empreendedor' },
-                    { url: IMG_BASE_URL + 'info_60.jpeg', descricao: 'Turma de informática 60+', materiaId: 'turma_informatica' }
+                    { url: IMG_BASE_URL + 'empreen_02.jpeg', descricao: 'Oficina do Empreendedor', materiaId: 'oficina_empreendedor' }
                 ]
             }
         };
@@ -1347,6 +1579,7 @@
                 if (transparenciaModal.style.display === 'flex') { transparenciaModal.style.display = 'none'; document.body.style.overflow = 'auto'; }
                 if (galeriaModal.style.display === 'flex') { galeriaModal.style.display = 'none'; document.body.style.overflow = 'auto'; }
                 if (materiaModal.style.display === 'flex') { materiaModal.style.display = 'none'; document.body.style.overflow = 'auto'; }
+                if (emendaModal.style.display === 'flex') { emendaModal.style.display = 'none'; document.body.style.overflow = 'auto'; }
             }
         });
     </script>
