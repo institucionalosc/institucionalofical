@@ -546,10 +546,103 @@
             box-shadow: 0 6px 20px rgba(255, 87, 34, 0.4);
         }
 
+        /* INSTRUMENTOS DE PARCERIA - FISCALGOV.BR */
+        .instrumentos-section {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--accent-color);
+        }
+
+        .card-resumo {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+
+        .card-resumo-light {
+            background: var(--light-green);
+            padding: 1.2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+
+        .fiscal-grid {
+            background: var(--light-green);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .fiscal-card {
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .tabela-instrumentos {
+            overflow-x: auto;
+        }
+
+        .tabela-instrumentos table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .tabela-instrumentos th {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .tabela-instrumentos td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--light-green);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-top: 1rem;
+        }
+
+        .status-andamento {
+            background: #ff9800;
+            color: white;
+        }
+
+        .status-analise {
+            background: #ff9800;
+            color: white;
+        }
+
+        .nota-explicativa {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+        }
+
         .transparencia-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
+            margin-top: 2rem;
         }
 
         .transparencia-card {
@@ -611,20 +704,6 @@
             border-radius: 10px;
             margin: 1rem 0;
             text-align: center;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 0.3rem 1rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-top: 1rem;
-        }
-
-        .status-andamento {
-            background: #ff9800;
-            color: white;
         }
 
         /* MODAL EMENDA */
@@ -1167,6 +1246,7 @@
             .nav-menu.active { left: 0; }
             .nav-buttons { flex-direction: column; width: 100%; }
             .projetos-grid { grid-template-columns: 1fr; }
+            .recursos-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -1215,12 +1295,15 @@
                 <h2><i class="fas fa-chart-line"></i> Portal da Transparência</h2>
                 <span class="transparencia-close">&times;</span>
             </div>
+            
+            <!-- Resumo Financeiro -->
             <div class="transparencia-resumo">
                 <div class="resumo-item"><i class="fas fa-hand-holding-heart"></i><div class="valor">R$ 60.000,00</div><div class="label">Total Arrecadado (2025)</div></div>
                 <div class="resumo-item"><i class="fas fa-users"></i><div class="valor">385</div><div class="label">Pessoas Atendidas</div></div>
                 <div class="resumo-item"><i class="fas fa-project-diagram"></i><div class="valor">7</div><div class="label">Projetos Ativos</div></div>
             </div>
             
+            <!-- Recursos Anuais -->
             <div class="recursos-anuais">
                 <h3><i class="fas fa-chart-line"></i> Recursos Anuais (Doações)</h3>
                 <div class="recursos-grid">
@@ -1232,12 +1315,90 @@
                 </div>
             </div>
 
+            <!-- Mensagem sobre emendas anteriores -->
             <div class="mensagem-emendas">
                 <i class="fas fa-info-circle"></i> O CIDH não recebeu emendas parlamentares entre os anos de 2020 a 2025, razão pela qual não há informação a respeito.
             </div>
             
+            <!-- Botão Emenda 2026 -->
             <button class="btn-emenda-modal" id="btnEmendaModal"><i class="fas fa-file-alt"></i> Ver Emenda 2026</button>
 
+            <!-- INSTRUMENTOS DE PARCERIA - FISCALGOV.BR -->
+            <div class="instrumentos-section">
+                <h3 style="color: var(--primary-color); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-file-signature"></i> Instrumentos de Parceria - Fiscalgov.br
+                </h3>
+                
+                <!-- Cards de Resumo -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                    <div class="card-resumo">
+                        <i class="fas fa-dollar-sign" style="font-size: 2rem;"></i>
+                        <div style="font-size: 1.8rem; font-weight: 800;">R$ 200.000,00</div>
+                        <div style="font-size: 0.85rem; opacity: 0.9;">Valor Global</div>
+                    </div>
+                    <div class="card-resumo-light">
+                        <i class="fas fa-hand-holding-usd" style="font-size: 2rem; color: var(--primary-color);"></i>
+                        <div style="font-size: 1.8rem; font-weight: 800; color: var(--primary-color);">R$ 0,00</div>
+                        <div style="font-size: 0.85rem; color: var(--text-light);">Valor Liberado</div>
+                    </div>
+                    <div class="card-resumo-light">
+                        <i class="fas fa-piggy-bank" style="font-size: 2rem; color: var(--primary-color);"></i>
+                        <div style="font-size: 1.8rem; font-weight: 800; color: var(--primary-color);">R$ 0,00</div>
+                        <div style="font-size: 0.85rem; color: var(--text-light);">Saldo em conta</div>
+                    </div>
+                    <div class="card-resumo-light">
+                        <i class="fas fa-undo-alt" style="font-size: 2rem; color: var(--primary-color);"></i>
+                        <div style="font-size: 1.8rem; font-weight: 800; color: var(--primary-color);">R$ 0,00</div>
+                        <div style="font-size: 0.85rem; color: var(--text-light);">Valores Devolvidos</div>
+                    </div>
+                </div>
+
+                <!-- Análise Fiscalgov.br -->
+                <div class="fiscal-grid">
+                    <h4 style="color: var(--primary-color); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-chart-bar"></i> Análise da utilização do aplicativo Fiscalgov.br
+                    </h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                        <div class="fiscal-card">
+                            <div style="font-size: 0.85rem; color: var(--text-light);">Instrumentos Elegíveis</div>
+                            <div style="font-size: 1.5rem; font-weight: 800; color: var(--primary-color);">1</div>
+                        </div>
+                        <div class="fiscal-card">
+                            <div style="font-size: 0.85rem; color: var(--text-light);">Instrumentos Com Fotos</div>
+                            <div style="font-size: 1.5rem; font-weight: 800; color: var(--primary-color);">0</div>
+                        </div>
+                        <div class="fiscal-card">
+                            <div style="font-size: 0.85rem; color: var(--text-light);">% Utilização Fiscalgov.br</div>
+                            <div style="font-size: 1.5rem; font-weight: 800; color: var(--primary-color);">0%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabela de Instrumentos -->
+                <div class="tabela-instrumentos">
+                    <table>
+                        <thead>
+                            <tr><th>Instrumento</th><th>Nº Proposta</th><th>Valor</th><th>Status</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Termo de Fomento</strong></td>
+                                <td>010156/2026</td>
+                                <td>R$ 200.000,00</td>
+                                <td><span style="background: #ff9800; color: white; padding: 0.2rem 0.8rem; border-radius: 50px; font-size: 0.8rem;">Proposta em Análise</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Nota explicativa -->
+                <div class="nota-explicativa">
+                    <i class="fas fa-info-circle" style="color: #ff9800;"></i>
+                    <strong>Nota:</strong> O CIDH não possui instrumentos de parceria com valores liberados ou saldo em conta até o momento. A Emenda 41380020 (R$ 200.000,00) está com proposta em análise no Ministério do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte.
+                </div>
+            </div>
+
+            <!-- Grid de Projetos existente -->
             <div class="transparencia-grid">
                 <div class="transparencia-card"><img src="https://raw.githubusercontent.com/institucionalosc/institucionalofical/main/mani_01.jpeg" onerror="this.src='https://via.placeholder.com/400x200'"><div class="transparencia-info"><h3>Quarta Turma do Curso de Empreendedora Manicure</h3><div class="termo-parceria"><i class="fas fa-handshake"></i><p>Termo de Parceria - SESC</p></div><span class="status-badge status-andamento">Em Andamento</span></div></div>
                 <div class="transparencia-card"><img src="https://raw.githubusercontent.com/institucionalosc/institucionalofical/main/roda01.jpeg" onerror="this.src='https://via.placeholder.com/400x200'"><div class="transparencia-info"><h3>Inclusão Social</h3><div class="detalhe-valores"><div class="linha"><span>Investimento:</span><strong>R$ 5.000,00</strong></div><div class="total">Total: R$ 5.000,00</div></div><span class="status-badge status-andamento">Em Andamento</span></div></div>
