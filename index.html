@@ -610,6 +610,28 @@
             border-bottom: 1px solid var(--light-green);
         }
 
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-download:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+        }
+
         .status-badge {
             display: inline-block;
             padding: 0.3rem 1rem;
@@ -1389,6 +1411,15 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+
+                <!-- BOTÃO DE DOWNLOAD DA PLANILHA -->
+                <div style="margin-top: 1.5rem; text-align: right;">
+                    <a href="https://github.com/institucionalosc/institucionalofical/raw/refs/heads/main/Planilha%20CDIH%20-%20Paniel%20de%20Transferencia%20(1).xlsx" 
+                       download 
+                       class="btn-download">
+                        <i class="fas fa-download"></i> Baixar Planilha de Transferências
+                    </a>
                 </div>
 
                 <!-- Nota explicativa -->
