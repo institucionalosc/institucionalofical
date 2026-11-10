@@ -171,13 +171,12 @@ html
             padding: 0.3rem;
         }
 
-        /* ========== BANNER FEIRA (arte sempre inteira, sem corte) ========== */
+        /* ========== BANNER FEIRA (proporcional no desktop e mobile) ========== */
         .banner-feira {
             display: block;
             margin-top: 70px;
-            position: relative;
-            overflow: hidden;
-            background: var(--light-green);
+            padding: 0;
+            background: linear-gradient(135deg, #f1f8f1 0%, var(--light-green) 100%);
             cursor: pointer;
             text-decoration: none;
             text-align: center;
@@ -186,15 +185,16 @@ html
         .banner-feira img {
             display: block;
             width: 100%;
+            max-width: 1300px;
             height: auto;
-            max-height: none;
+            max-height: 640px;
             object-fit: contain;
             object-position: center;
             margin: 0 auto;
             transition: transform 0.7s ease;
         }
 
-        .banner-feira:hover img { transform: scale(1.02); }
+        .banner-feira:hover img { transform: scale(1.015); }
 
         .banner-feira-strip {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -826,6 +826,8 @@ html
             .hero-content { order: 2; text-align: center; }
             .hero-image { order: 1; }
             .diretoria-content { padding: 2rem; }
+
+            .banner-feira img { max-height: 520px; }
         }
 
         @media screen and (max-width: 768px) {
@@ -833,6 +835,7 @@ html
             .logo { font-size: 1.6rem; }
             .recursos-grid { grid-template-columns: repeat(2, 1fr); }
 
+            .banner-feira img { max-height: 420px; }
             .banner-feira-strip { padding: 1.6rem 0.9rem 1.8rem; }
             .banner-feira-strip .btn-inscricao { padding: 0.85rem 1.8rem; }
 
@@ -843,6 +846,10 @@ html
             .resumo-item .valor { font-size: 1.5rem; }
             .historia-texto { padding: 1.8rem; }
             .missao-card { padding: 2rem 1.5rem; }
+        }
+
+        @media screen and (max-width: 480px) {
+            .banner-feira img { max-height: 340px; }
         }
     </style>
 </head>
