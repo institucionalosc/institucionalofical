@@ -6,7 +6,7 @@ html
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>CIDH - Centro Integrado de Desenvolvimento Humano</title>
 
-    <!-- Favicon (emoji inline, evita 404) -->
+    <!-- Favicon (emoji inline) -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
 
     <!-- Fontes -->
@@ -171,27 +171,29 @@ html
             padding: 0.3rem;
         }
 
-        /* ========== BANNER FEIRA (proporcional e responsivo) ========== */
+        /* ========== BANNER FEIRA (arte sempre inteira, sem corte) ========== */
         .banner-feira {
             display: block;
             margin-top: 70px;
             position: relative;
             overflow: hidden;
             background: var(--light-green);
-            line-height: 0;
             cursor: pointer;
             text-decoration: none;
+            text-align: center;
         }
 
         .banner-feira img {
+            display: block;
             width: 100%;
             height: auto;
-            max-height: 560px;
-            object-fit: cover;
+            max-height: none;
+            object-fit: contain;
             object-position: center;
-            display: block;
+            margin: 0 auto;
             transition: transform 0.7s ease;
         }
+
         .banner-feira:hover img { transform: scale(1.02); }
 
         .banner-feira-strip {
@@ -269,7 +271,7 @@ html
 
         section[id] { scroll-margin-top: 90px; }
 
-        /* ========== MODAIS (padronizados) ========== */
+        /* ========== MODAIS ========== */
         .modal, .materia-modal, .transparencia-modal, .emenda-modal, .galeria-modal {
             display: none;
             position: fixed;
@@ -664,7 +666,7 @@ html
             border: 4px solid var(--white);
         }
 
-        /* ========== SEÇÕES GENÉRICAS ========== */
+        /* ========== SEÇÕES ========== */
         .container { max-width: 1300px; margin: 0 auto; }
         .historia-section, .projetos-section { padding: 5rem 2rem; background: var(--white); }
         .missao-section { padding: 5rem 2rem; background: var(--light-green); }
@@ -817,8 +819,6 @@ html
             .nav-menu.active { left: 0; }
             .nav-buttons { flex-direction: column; width: 100%; gap: 0.8rem; }
             .btn-emenda { margin-left: 0; }
-
-            .banner-feira img { max-height: 460px; }
         }
 
         @media screen and (max-width: 968px) {
@@ -833,7 +833,6 @@ html
             .logo { font-size: 1.6rem; }
             .recursos-grid { grid-template-columns: repeat(2, 1fr); }
 
-            .banner-feira img { max-height: 380px; }
             .banner-feira-strip { padding: 1.6rem 0.9rem 1.8rem; }
             .banner-feira-strip .btn-inscricao { padding: 0.85rem 1.8rem; }
 
@@ -871,7 +870,7 @@ html
         </div>
     </nav>
 
-    <!-- ========== BANNER FEIRA (arte em destaque) ========== -->
+    <!-- ========== BANNER FEIRA ========== -->
     <a href="https://docs.google.com/forms/d/1c_BY95bYkjLxx5DhH4qZmPUeW9Anz4jcDECqlkNue4k/preview"
        target="_blank" rel="noopener"
        class="banner-feira" aria-label="Inscreva-se na Feira do Empreendedor">
@@ -879,7 +878,6 @@ html
              alt="Feira do Empreendedor - CIDH">
     </a>
 
-    <!-- Faixa verde com CTA laranja -->
     <div class="banner-feira-strip">
         <h2>Feira do Empreendedor</h2>
         <p>Participe gratuitamente e transforme sua ideia em negócio.</p>
@@ -1294,7 +1292,6 @@ html
             );
             if (abertos.length === 0) document.body.style.overflow = 'auto';
         }
-        // impede clique dentro do conteúdo de propagar para o backdrop
         document.querySelectorAll(
             '.modal-content, .materia-content, .transparencia-content, .emenda-content, .galeria-content'
         ).forEach(c => c.addEventListener('click', e => e.stopPropagation()));
